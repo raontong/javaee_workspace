@@ -1,0 +1,9 @@
+package site1118;
+
+/* 클래스 중 오직 javaEE 의 서버에서만 해석 및 실행되어질 수 있는 클래스를 가리켜 서블릿(Servlet)이라 한다
+ 현재 클래스를 서블릿으로 , HttpServlet을 상속받으면된다
+  
+  */
+public class MyServlet {
+
+}

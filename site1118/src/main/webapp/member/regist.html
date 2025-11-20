@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	// 사용자가 작성한 폼을, tomcat서버로 전송하자!!(서버로부터 가져올때는 Get방식이지만,
+	// 서버로 데이터를 전송할떄는 post방식으로 요청을 시도해야함)
+	// HTTP 프로토콜의 약속!!
+	function send() {
+		// 생성된 DOM중 form1 이라는 객체를  이용하여 유저가 입력한 데이터를 서버로 전송하자 
+		// 유저가 입력한 데이터를 전송 파라미터라 한다
+		let form1 = document.getElementById("form1");
+
+		// 서버의 주소를 입력할 수 있는 조사
+		form1.method = "post"; //서블릿이 post 방식을 여ㅏㅁ두해 두고 기다리고 있음
+		form1.action = "/member/regist"; //서버에ㅐ서 이 요청을 처리할url..
+		form1.submit(); //서버에 전송하는 행위..
+	}
+</script>
+</head>
+<body>
+	<form id="form1">
+		<!-- form을 보내는  -->
+		<div>
+			<input type="text" placeholder="Yout ID..." name="id">
+		</div>
+		<div>
+			<input type="text" placeholder="Yout PASSWORD..." name="pwd">
+		</div>
+		<div>
+			<input type="text" placeholder="Yout NAME..." name="name">
+		</div>
+		<div>
+			<button type="button" onclick="send()">전송</button>
+		</div>
+	</form>
+	<!-- http://localhost:7979/member/regest -->
+</body>
+</html>
