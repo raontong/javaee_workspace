@@ -1,7 +1,0 @@
-package site1118;
-
-public class animal {
-	public static void main(String[] args) {
-		
-	}
-}

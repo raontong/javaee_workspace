@@ -3,7 +3,7 @@
   <display-name>site1118</display-name>
 
    <!--ctrl+shift+/ 주석 단축키  -->
-   <!-- 웹브라우저로 클래스명을 직접 접근할 수 없으므로, 가상의 url주소로 매핑하여 우리의 서블릿을 실행해볼 수 있다.-->
+   <!-- 웹브라우저로 클래스명을 직접 접근할 수 없으므로, 가상의 url 주소로 매핑하여 우리의 서블릿을 실행해볼 수 있다.-->
    <!-- http://localhost:7979/main-->
    <!-- 이걸 서블릿 매핑이라 함. -->
    <servlet>
@@ -40,5 +40,14 @@
    <servlet-mapping>
       <servlet-name>joinServlet</servlet-name>
       <url-pattern>/member/join</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+      <servlet-name>listServlet</servlet-name>
+      <servlet-class>com.ch.site1118.controller.MemberList</servlet-class>
+   </servlet>
+   <servlet-mapping>
+      <servlet-name>listServlet</servlet-name>
+      <url-pattern>/member/list</url-pattern>
    </servlet-mapping>
    </web-app>

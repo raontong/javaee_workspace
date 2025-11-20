@@ -14,12 +14,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ch.site1118.util.EmailManager;
+
 
 // 마지막..클라이언트가 전송한 파라미터들을 받아서, 오라클에 넣기!
 // 클라이언트의 요청이 웹브라우저 이므로, 즉 웹상의 요청을 받을 수 있고,
 // 오직 서버에서만 실행 될수 있는 클래스인 서블릿으로 정의 하자!
 public class JoinController extends HttpServlet{
-		// doxx 형 메서드중 post방식을 처리하기 위한 doPost메서드 오버라이드 하자
+	
+	EmailManager emailManager=new EmailManager(); 
+	
+	// doxx 형 메서드중 post방식을 처리하기 위한 doPost메서드 오버라이드 하자
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 나의 이름이 , 웹브라우저에 출력되게 끔..
@@ -73,8 +78,6 @@ public class JoinController extends HttpServlet{
 	        
 	        pstmt =con.prepareStatement(sql);
 	        
-	        
-	        
 	        // 바인드 변수를 사용하게 되면, 물음표의 값이 무엇인지 개발자가 prepareStatement에게 알려줘야함
 	        // 클라이언트가 전송한 파라미터 받기
 	        // 네트워크로 전송된 모든 파라미터는 모두 문자로 전송됨
@@ -99,11 +102,15 @@ public class JoinController extends HttpServlet{
 	        // 0이 반환되면 한건도 반영된 레코드가 ㅇ벗다는 의미로, 쿼리 반영실패를 의미
 	        if(result !=0){
 	        	out.print("가입성공");
+	        	emailManager.send(email);
+	        	
+	        	// 회원목록 페이지 보여주기
+	        	response.sendRedirect("/member/list"); // 브라우저로 하여금  지정한 url로 다시접속 (들어오라는) 하라는명령
+	        	
+	        
 	        }else {
 	        	out.print("가입실패");
 	        }
-	        
-	        
 			
 		} catch (ClassNotFoundException e) {
 			out.print("드라이버 로드 실패");
@@ -111,6 +118,7 @@ public class JoinController extends HttpServlet{
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+			
 		} finally {
 			if(con !=null) { //접속이 존재할떄만..
 				try {
