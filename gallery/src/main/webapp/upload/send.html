@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script>
+	// 이 라인에서는 아직 실행부가 버튼에 도달하지 못했으므로, 문서가 모두 로드된 시점에 이벤트 연결하자
+	window.addEventListener("load",function(){
+		// 이시점 부터는 문서가 모드 로드된 시점이므로, 원하는 요소를 접근가능
+		document.getElementById("bt_send").addEventListener("click", function(){
+			// 폼을 서버로 전송하자
+			window.document.form1.submit();
+	 	});
+	});
+</script>
+</head>
+<body>
+	<pre> <!-- 화면에 보여지는것 -->
+	서버로 파일을 전송 하는 업로드라는 기술은 java로 직접 구현할 경우, 개발자가 네트워크 통신, IO(입출력), FIle등을 제어해야함.
+	생산성이 떨어지므로, 실무에서는 이미 누군가가 제작해놓은 라이브러리를 이용함
+	[종류]
+	유료- 나중에 
+	무료-Apache 에서 제작한  FileUpload 컴포넌트
+			Orelliy 라는 IT 출판사에서 Servlet 책을 발간하면서 예제로 제작한 업로드 컴포넌트인 Cos.jr 가 있음
+			http://servlets.com
+	</pre>
+	<div>
+		서버로 일반 텍스타가 아닌, 이미지, 동영상과 같은 바이너리 파일(인간이 해석할수 없는 유형의 파일)
+		반드시 POST방식으로 전송해야 하며, 특히나 인코딩 타입도 multipart/form-data라는 형식을 지정해야한다..
+		이때 multipart 의 의미는 서버로 전송하고자 하는 미디어 타입이 텍스트뿐만 아니라, 바이너리도 섞여 있는 복합유형을 의미
+		<!-- 1_method ="post"  파일업로드나 많은 양을 보낼때 데이터를 서버로 전송하는 방식 /
+				2_ enctype="multipart/form-data" 일반 텍스트+바이너리 파일 전송   
+				3_ action="/upload" 데이터보내는데 서버측에서 이 경로를 처리하는 로직이 있어야함.(JSP,  Servlet 등)  -->
+		<form name="form1" method="post" enctype="multipart/form-data" action="/upload">
+		<div>
+			<!--   placeholder 입력전 안내문구 -->
+			<input type="text" placeholder="사진 제목을 입력.." name="title">
+		</div>
+		<div>
+		<!-- 파일 컴포넌트에 이름을 부여하지 않으면 서버측에서 파라미터가 없다고 간주하여
+		업로드 수행이 불가함 -->
+		이미지를 선택하세요 <input type="file" name="photo">
+		</div>
+		<div>
+			<button type="button" id="bt_send">서버로 업로드</button>
+		</div>
+		</form>
+	</div>
+</body>
+</html>
