@@ -100,7 +100,7 @@ a {text-decoration: none;}
 		<%} %>
 		<tr>
 			<td colspan="5">dd</td>
-			<button onClick="location.href='notice/regist.jsp'">글등록</button>
+			<button onClick="location.href='/notice/regist.jsp'">글등록</button>
 		</tr>
 	</table>
 

@@ -24,10 +24,20 @@
   <!-- 글 삭제 요청 처리 서블릿  -->
   <servlet>
     <servlet-name>deleteServlet</servlet-name>
-      <servlet-class>com.ch.notice.notice.deleteServlet</servlet-class>
+      <servlet-class>com.ch.notice.notice.DeleteServlet</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>deleteServlet</servlet-name>
-  	<url-pattern>/notice/regist</url-pattern>
+  	<url-pattern>/notice/delete</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 글 수정 요청 처리 서블릿  -->
+  <servlet>
+    <servlet-name>editServlet</servlet-name>
+      <servlet-class>com.ch.notice.notice.EditServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>editServlet</servlet-name>
+  	<url-pattern>/notice/edit</url-pattern>
   </servlet-mapping>
 </web-app>

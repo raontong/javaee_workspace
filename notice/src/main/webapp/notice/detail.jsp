@@ -6,16 +6,15 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%!
 	String url="jdbc:mysql://localhost:3306/java";
-	String user="servlet";
+	String user="servlet"; 
 	String password="1234";
-	
-	Connection con;
-	PreparedStatement pstmt;
-	ResultSet rs;
+
+	Connection con; 						// DB와의 연결(접속) 정보 객체_ DB 서버와 <★전화선을 연결>하는 역할
+	PreparedStatement pstmt; 		// SQL 쿼리를 실행 객체_ 전화선을 통해 실제로 <★메시지를 보내는 사람>
+	ResultSet rs; 							// SELECT 문 결과인 <★표>를 가진 객체
 %>
 
 <%
-
 	// 위의 페이지 지시 영역은 현재 jsp가 Tomcat에 의해 서블릿으로 코딩 되어 질때
 	// response.seContentType("text/htm");
 	// charset=UTF-8 response.setCharacterEncoding("utf-8");
@@ -28,7 +27,6 @@
 			
 	out.print("select * from notice where notice_id="+notice_id);
 	
-	
 	// 드라이버 로드
 	Class.forName("com.mysql.cj.jdbc.Driver");
 		
@@ -36,17 +34,14 @@
 	con = DriverManager.getConnection(url, user, password);
 	
 	// 쿼리문 날리기
+	// 오라클  "select * from member order by member_id asc";
 	String sql="select * from notice where notice_id="+notice_id;
 	pstmt = con.prepareStatement(sql);
 	rs=pstmt.executeQuery();
 	
 	rs.next();
 	
-	
-	
 %>
-
-
 
 <!DOCTYPE html>
 <html>
@@ -114,6 +109,24 @@ input[type=button]:hover {
 		form1.method="post"; 
 		form1.submit(); // 전송이 발생
 	}
+	function edit(){
+		if(confirm("수정하실래요?")){
+			// 작성된 폼 양식을 서버로 전송!!
+			let form1=document.getElementById("form1");
+			form1.action="/notice/edit"; // 서버의 url << 서블릿
+			form1.method="post";
+			form1.submit();''
+		}
+	}
+	
+	function del(){
+	    // confirm("삭제하시겠어요?");
+		// console.log("유저의 대답은?", res);
+		if(confirm("삭제하시겠어요?")){
+			location.href='/notice/delete?notice_id=<%=rs.getInt("notice_id")%>';
+		}
+	}
+	
 
 </script>
 </head>
@@ -121,12 +134,16 @@ input[type=button]:hover {
 
 	<div class="container">
 		<form id="form1">
+			<!-- 파라미터중 굳이 일반 유저에게 노출될 필요가 없는 경우, 존재는 하나 눈에 보이지 않게 하는 목적으로 사용 
+			ex) 신용카드 결제 시스템 등 개발 시 많이 사용..-->
+			<input type="hidden" name="notice_id" value="<%= rs.getInt("notice_id") %>" style="background:yellow">
+			
 			<input type="text" name="title" value="<%= rs.getString("title") %>">
 			<input type="text" name="writer" value="<%= rs.getString("writer") %>"> 
-			<textarea id="subject" name="content"  style="height: 200px"><%=rs.getString("content")%></textarea>
-			<input type="button" value="수정" onClick="">
-			<input type="button" value="삭제" onClick="">
-			<!-- js에서 링크를 표현한 내장객체를 location  -->
+			<textarea name="content"  style="height: 200px"><%=rs.getString("content")%></textarea>
+			<input type="button" value="수정" onClick="edit()">
+			<input type="button" value="삭제"  onClick="del()">
+						<!-- js에서 링크를 표현한 내장객체를 location  -->
 			<input type="button" value="목록" onClick="location.href='/notice/list.jsp'">
 		</form>
 	</div>
