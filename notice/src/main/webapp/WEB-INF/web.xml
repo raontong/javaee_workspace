@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>notice</display-name>
+<!-- 
+웰컴 파일이란?
+	아래의 목록에 적혀 잇는 파일명은 굳이 사용자가 웹브라우저에 명시할 필요가 없음
+	ㅇ) http://localhost:8888/index.html ( 여기서 index.html은 아래 목록에 포함되므로 생략이 가능)
+  -->  
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <!-- 글 요청 ㅇ 처리 서블릿 -->
+  <servlet>
+    <servlet-name>registServlet</servlet-name>
+      <servlet-class>com.ch.notice.notice.RegistServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>registServlet</servlet-name>
+  	<url-pattern>/notice/regist</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 글 삭제 요청 처리 서블릿  -->
+  <servlet>
+    <servlet-name>deleteServlet</servlet-name>
+      <servlet-class>com.ch.notice.notice.deleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>deleteServlet</servlet-name>
+  	<url-pattern>/notice/regist</url-pattern>
+  </servlet-mapping>
+</web-app>

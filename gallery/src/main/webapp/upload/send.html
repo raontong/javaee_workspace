@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 <script>
 	// 이 라인에서는 아직 실행부가 버튼에 도달하지 못했으므로, 문서가 모두 로드된 시점에 이벤트 연결하자
 	window.addEventListener("load",function(){
@@ -33,18 +32,18 @@
 				2_ enctype="multipart/form-data" 일반 텍스트+바이너리 파일 전송   
 				3_ action="/upload" 데이터보내는데 서버측에서 이 경로를 처리하는 로직이 있어야함.(JSP,  Servlet 등)  -->
 		<form name="form1" method="post" enctype="multipart/form-data" action="/upload">
-		<div>
-			<!--   placeholder 입력전 안내문구 -->
-			<input type="text" placeholder="사진 제목을 입력.." name="title">
-		</div>
-		<div>
-		<!-- 파일 컴포넌트에 이름을 부여하지 않으면 서버측에서 파라미터가 없다고 간주하여
-		업로드 수행이 불가함 -->
-		이미지를 선택하세요 <input type="file" name="photo">
-		</div>
-		<div>
-			<button type="button" id="bt_send">서버로 업로드</button>
-		</div>
+			<div>
+				<!--   placeholder 입력전 안내문구 -->
+				<input type="text" placeholder="사진 제목을 입력.." name="title">
+			</div>
+			<div>
+			<!-- 파일 컴포넌트에 이름을 부여하지 않으면 서버측에서 파라미터가 없다고 간주하여
+			업로드 수행이 불가함 -->
+			이미지를 선택하세요 <input type="file" name="photo">
+			</div>
+			<div>
+				<button type="button" id="bt_send">서버로 업로드</button>
+			</div>
 		</form>
 	</div>
 </body>

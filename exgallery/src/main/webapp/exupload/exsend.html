@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	addEventListener("load", function(){
+		document.getElementById("bt_upload").addEventListener("click", function(){
+			document.form1.submit();
+			});
+	});
+</script>
+</head>
+<body>
+	<div>
+		<form name="form1" method="post"	 enctype="mutipart/form-data" action="upload">
+			<div>
+				<input type="text"  placeholder="사진이름입력"  name="title" > 
+			</div>
+			<div>
+				예를들어 이미지 선택 <input type="file"  name="photo" > 
+			</div>
+			<div>
+				<button type="button"  id="bt_exsend">사진 업로드</button>
+			</div>
+		</form>
+		
+	</div>
+</body>
+</html>
