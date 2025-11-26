@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /*글 한건  삭제 요청을 처리하는 서블릿 정의
 	delete from notice where notice_id = 넘겨받은 파라미터값;
- 	pk값은 내용이 길지 않으며, 보안상 주용하지도 않기 때문에 get 방식으로 받자
+ 	pk값은 내용이 길지 않으며, 보안상 중요 하지도 않기 때문에 get 방식으로 받자
   */
 public class DeleteServlet extends HttpServlet {
 	String url = "jdbc:mysql://localhost:3306/java";

@@ -9,7 +9,7 @@
 	String user="servlet"; 
 	String password="1234";
 
-	Connection con; 						// DB와의 연결(접속) 정보 객체_ DB 서버와 <★전화선을 연결>하는 역할
+	Connection con; 					// DB와의 연결(접속) 정보 객체_ DB 서버와 <★전화선을 연결>하는 역할
 	PreparedStatement pstmt; 		// SQL 쿼리를 실행 객체_ 전화선을 통해 실제로 <★메시지를 보내는 사람>
 	ResultSet rs; 							// SELECT 문 결과인 <★표>를 가진 객체
 %>
