@@ -94,6 +94,7 @@ public class RegistServlet extends HttpServlet{
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+			
 			finally {
 				if(pstmt!=null) {
 					try {
