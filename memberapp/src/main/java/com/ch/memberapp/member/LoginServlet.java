@@ -105,8 +105,6 @@ public class LoginServlet extends HttpServlet {
 				     * */
 				    session.setAttribute("member", member);
 				    
-				    
-				    
 				} else {
 					tag.append("alert('로그인 실패');");
 					tag.append("history.back();"); // 브라우저 뒤로가기
