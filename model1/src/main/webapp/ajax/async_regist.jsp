@@ -58,17 +58,34 @@
 					JASON문자열이라 한다.			
 	*/
 	
+	
 	// 아래의 json문자열은 말 그대로 문자열 이므로, java는 그냥 String 으로 처리한다. 
 	StringBuffer data = new StringBuffer();
-	data.append("{");
-	data.append("\"name\":\"지노\",");
-	data.append("\"email\":\"google\" ");
-	data.append("}");
-	
+	// list의 배열 표현
+	data.append("[");
+	for(int i=0; i<list.size(); i++){
+		Member2 obj=list.get(i); 	
+		data.append("{");
+		data.append("\"member2_id\":"+obj.getMember2_id()+",");
+		data.append("\"id\":\""+obj.getId()+"\", ");
+		data.append("\"name\":\""+obj.getName()+"1\", ");
+		data.append("\"email\":\""+obj.getEmail()+"\" ");
+		data.append("}");
+		if (i<list.size()-1){
+			data.append(","); // 쉽표는 리스트의 총 길이 -1 보다 작은 경우 
+		}
+	}
+	data.append("]");
 	out.print(data.toString()); //  클라이언트인 웹브라우저에게 보내기
 	
 	
-	// out.print("id=tiger, name=호랑이, email=daum");
+	// 만일 요청의 유형이 동기방식 이었다면, 유저는 목록화면을 보아야 하므로, 아래와 같은 코드를 작성해야함
+	// out.print("location.href=list.jsp;"); 브라우저로 하여ㅏ금  lislt. jsp 로 하여금 다시 들어오라는 명령이므로, 
+	// 유저의 브라우저는 새로운 html을 화면에 렌더링 하게 되어, 유저가 느끼기에는 새로고침 (깜빡임)이 발생해버림..
+	// 따라서 비동기 요청이 들어오면 서버는 절대로 문서 또는 링크를 보내면 안되고, 순수한 데이터만을 보내야 한다.
+	// 어떤 데이터를 보내야 하나? 응답을 받은 html 은 자바스크립트 코드가 관여되기때문에, js에서 객체를 다룰 수 있는 형태일 경우
+	// 개발자에게 많은 이점이 있다.. 그렇다면 .. 보내야 할 데이터의 정보의 유형은 ??xml --> JSON 이 대세다!!
 	
+	// out.print("id=tiger, name=호랑이, email=daum");
 	
 %>

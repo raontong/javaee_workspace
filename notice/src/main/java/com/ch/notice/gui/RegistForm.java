@@ -51,8 +51,6 @@ public class RegistForm extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("나눌럿어?");
 				regist();
-				
-				
 			}
 		});
 	}

@@ -38,8 +38,8 @@ public class DeleteServlet extends HttpServlet {
 		String notice_id = request.getParameter("notice_id");
 		System.out.println("넘겨받은 notice_id 는 " + notice_id);
 
-		// 드라이버 로드
 		try {
+			// 드라이버 로드
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
 			// 접속

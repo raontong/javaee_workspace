@@ -43,7 +43,7 @@ public class RegistServlet extends HttpServlet{
 		out.print("클라이언트가 전송한 내용은"+content+"<br>");
 		
 		// mysql의 java db 안에  notice 에 insert!!
-		// 앞으로 필요한 라이브러리(ㅓㅁㄱ)가 잇을 경우, 일일이 개발자가 손수 다운로드 받아
+		// 앞으로 필요한 라이브러리(jar)가 잇을 경우, 일일이 개발자가 손수 다운로드 받아
 		// WEB-INF/LIB에 옴기지 말고, maven 빌드툴을 이용하자!!
 		// Build - 실행할수 있는 상태로 구축하는 것을 말함
 		// 			src/animal.Dog.java 작성 후 . bin/animal.Dog.class에 대해ㅐ
