@@ -13,13 +13,10 @@
     request.setCharacterEncoding("UTF-8");
     String movie=request.getParameter("movie");
     out.print(movie);
-
     // 각 영화에 대한 판단을 해주는 코드가 별도의 모델 객체로 분리되었다!! 
     // 분리 시킨이유? 웹뿐만 아니라, 다른 플랫폼에서도 재사용하기 위해, 재사용=시간=돈
     // 재사용 대상(모델!!)
    	String msg=manager.getAdvice(movie);
-    
-    
 
 %>
 <!DOCTYPE html>
