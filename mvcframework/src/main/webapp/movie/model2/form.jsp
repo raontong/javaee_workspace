@@ -8,8 +8,8 @@
 
 <script>
 	function request(){
-		document.querySelector("form").action="/movie";	
-		document.querySelector("form").method="post";	
+		document.querySelector("form").action="/movie.do";	
+		document.querySelector("form").method="get";	
 		document.querySelector("form").submit();	
 	} 
 	

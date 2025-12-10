@@ -1,0 +1,6 @@
+#자바의 컬렉션 프레임웍 객체 중 Map 를 상속받은 Properties 라는 객체는 Properties
+#어떤 데이터가 = 을 기준으로 key=value의 망으로 구성될 경우, 
+  좌측은 key 우측은 value 로 해석한다
+ 
+ /movie.do=com.ch.mvcframework.controller.MovieController
+ /food.do=com.ch.mvcframework.controller.FoodController

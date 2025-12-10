@@ -8,7 +8,7 @@
 
 <script>
 	function request(){
-		document.querySelector("form").action="/food";	
+		document.querySelector("form").action="/food.do";	
 		document.querySelector("form").method="post";	
 		document.querySelector("form").submit();	
 	} 

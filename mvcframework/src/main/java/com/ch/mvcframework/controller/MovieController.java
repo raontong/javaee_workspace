@@ -4,12 +4,10 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ch.mvcframework.movie.model.MovieManager;
-
 /*
  * MVC란? Model, View, Controller 를 의미하는 디자인 패턴 중 하나를 의미
  * MVC는 다운로드 ㅂ다거나, 눈에 보이는 파일이나 소스가 아니라, 그냥 전산분야에서 예전부터 선배들로 내려오는 개발 방법이론일 뿐이다.
@@ -26,12 +24,12 @@ import com.ch.mvcframework.movie.model.MovieManager;
  * 3) C - 클라이언트 요청을 받아야 하고, 오직 javaEE서버에서만 실행될 수 있어야 하므로 서블릿임
  *		 	주의) jsp 로 사실 서블릿이므로  Controller 역할을 수행할 수는 있지만, jsp가 주로 디자인에 사용되므로, 
  *		 	컨트롤러서의 역할은 주로 서블릿으로 구현함
- * 
  **/
-public class MovieController extends HttpServlet{
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+public class MovieController implements Controller{
+										/* is a 의 의미*/
+	MovieManager manager=new MovieManager();
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 클라이언트가 전송한 파라미터를 받아 영화에 대한 피드백 메시지 만들기 
-		MovieManager manager=new MovieManager();
 		
 		request.setCharacterEncoding("UTF-8");
 		String movie=request.getParameter("movie");

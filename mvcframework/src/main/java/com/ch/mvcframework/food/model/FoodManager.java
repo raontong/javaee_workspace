@@ -9,13 +9,13 @@ public class FoodManager {
 		
 		if(food != null){ // 파라미터가 있을때만..
 			if(food.equals("부대찌게")){
-				msg = "최신 먹은 음식";
+				msg = "햄과 고기가 들어간 한식";
 			} else if(food.equals("돈까스")){
-				msg = "톰크루즈 첩보 액션 시리즈";
+				msg = "돼지고기 튀김";
 			} else if(food.equals("에그드랍")){
-				msg = "외계생명체 SF 시리즈";
-			} else if(food.equals("주토초밥피아")){
-				msg = "디즈니 애니메이션";
+				msg = "샌드위치 브랜드";
+			} else if(food.equals("초밥")){
+				msg = "일본 대표음식";
 			}
 		}
 		return msg;
