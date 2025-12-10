@@ -12,6 +12,7 @@ public class BoardDAO {
 	public int insert(Board board) {
 		int result=0;
 		SqlSession sqlSession=mybatisConfig.getSqlSession();
+		// config.xml 에서 alias 함..<typeAlias type="com.ch.mvcframework.dto.Board" alias="Board"/>
 		result=sqlSession.insert("Board.insert", board);
 		// sqpSession 은 디폴트로 autocommit 속성이 false 로 되어있음
 		// 즉 commit 하지 않으면 insert 가 db 에 확정되지 않음
