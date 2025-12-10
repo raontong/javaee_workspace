@@ -5,7 +5,6 @@ import org.apache.ibatis.session.SqlSession;
 import com.ch.mvcframework.dto.Board;
 import com.ch.mvcframework.mybatis.MybatisConfig;
 
-//
 public class BoardDAO {
 	MybatisConfig mybatisConfig=MybatisConfig.getInstance();
 	// 글 한건 등록
@@ -13,7 +12,7 @@ public class BoardDAO {
 		int result=0;
 		
 		SqlSession sqlSession=mybatisConfig.getSqlSession();
-		SqlSession.insert("Board.insert", board);
+		sqlSession.insert("Board.insert", board);
 		return result;
 	}
 }

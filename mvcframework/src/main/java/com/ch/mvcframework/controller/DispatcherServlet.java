@@ -74,7 +74,9 @@ public class DispatcherServlet extends HttpServlet{
 	protected void doRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// System.out.println("클라이언트의 요청감지");
 		// 한번에 한글로 전환
-		request.set //
+		request.setCharacterEncoding("UTF-8");
+	    response.setContentType("text/html; charset=UTF-8");
+
 		/*
 		★★★ 모든 컨트롤러의 5대 업무★★★
 		1) 요청을 받는다
