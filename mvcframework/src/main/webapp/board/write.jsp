@@ -25,12 +25,12 @@
   		$('#summernote').summernote();
   		
   		// 등록 버튼에 이벤트 연결
-  		document.getElementById("bt_regist").addEventListener("click", function()){
+  		document.getElementById("bt_regist").addEventListener("click", function(){
   			// 서버에 전송
   			let form1=document.getElementById("form1");
   			form1.action="/board/regist.do"; // .do 로 끝나기 때문에, DispatcherServlet 을 만나게됨
   			form1.method="post";
-  			form1.submit()="";
+  			form1.submit();
   			
   		  		
   		});
@@ -48,15 +48,15 @@
   <form id="form1" action="/action_page.php">
     <div class="form-group">
       <label for="email">제목:</label>
-      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+      <input type="email" class="form-control" id="email" placeholder="Enter email" name="title">
     </div>
     <div class="form-group">
       <label for="pwd">작성자:</label>
-      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="writer">
     </div>
         <div class="form-group">
       <label for="pwd">내용:</label>
-      <textarea type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd"></textarea>
+      <textarea type="password" class="form-control" id="pwd" placeholder="Enter password" name="content"></textarea>
     </div>
     <div class="form-group form-check">
       <label class="form-check-label">

@@ -41,16 +41,15 @@ public class DispatcherServlet extends HttpServlet{
 			// 기준으로 파일명만 명시하면, 리눅스건, 맥이건, 윈도우건 상황에ㅐ 맞게 알아서 경로를 반환..
 			String paramValue=config.getInitParameter("contextConfigLocation");
 			System.out.println(paramValue);
-			String realPath=application.getRealPath("WEB-INF/servlet-mapping.txt");
+			String realPath=application.getRealPath(paramValue);
 			
 			System.out.println(realPath);
 			
 			// C:\\javaee_workspace\\mvcframework\\src\\main\\webapp\\WEB-INF\\servlet-mapping.txt
 			// 고정된(하드코드) 사용금지 >> 외부환경으로 뺴서 유지보수
-			fis = new FileInputStream("");
+			fis = new FileInputStream(realPath);
 			props = new Properties();
-			
-				props.load(fis);
+			props.load(fis);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

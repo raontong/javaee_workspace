@@ -6,8 +6,9 @@
 	 -->
 
 	<!-- 글 1건 등록  -->	
-	<insert id="insert">
-		insert into board(title, writer, content) values(#{},#{},#{})
+	<insert id="insert" parameterType="Board">
+		insert into board(title, writer, content) 
+		values(#{title},#{writer},#{content})
 	</insert>
 
 </mapper>

@@ -4,3 +4,6 @@
  
  /movie.do=com.ch.mvcframework.controller.MovieController
  /food.do=com.ch.mvcframework.controller.FoodController
+ 
+ # 게시판 컨트롤러 매핑
+ /board/regist.do=com.ch.mvcframework.controller.RegistController
