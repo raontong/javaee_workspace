@@ -1,4 +1,11 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.ch.mvcframework.dto.Board" %>
+<%
+	//4단계  .do로 들어가지 않고 바로 list로 접속하면 안되는 이유 ? null 이다. 컨트롤러로 들어가야한다   
+	List<Board> list = (List)request.getAttribute("list");
+	out.print("게시물이 담긴 리스트는 " + list.size());
+%>
 <!DOCTYPE html>
 <meta charset="UTF-8">
 <html lang="en">
@@ -21,10 +28,6 @@
 </script>
 <body>
 
-
-
-
-
 <div class="container">
   <h2>Basic Table</h2>
   <p>The .table class adds basic styling (light padding and horizontal dividers) to a table:</p>            
@@ -37,26 +40,26 @@
       </tr>
     </thead>
     <tbody>
+      	<% for(int i=0; i < list.size(); i++) { %>
+      	<%Board board=list.get(i); %>
       <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
+      	<td>
+      		<!--
+      			MVC 프레임웍상에서 데이터 베이스 연동이 필요한 기능에서 jsp를 바로 호출하면 안되는 이유?
+      			반드시 컨트롤러를 거쳐야만, 모델에게 일을 시키고 그 결과를 컨트롤러가 저장해주므로 만일 jsp를 바로 호출하면
+      			컨트롤러를 만나자 
+      		  -->
+      		<a href="/board/detail.do?board_id=<%=board.getBoard_id()%>"><%=board.getTitle() %></a>
+		<td><%=board.getWriter() %></td>
+		<td><%=board.getContent() %></td>
+      	</td>
       </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
-      <tr>
-      	<td colspan ="3">
-      		<button class="btn btn-primary">글등록</button>
-      </tr>
-      
+      <%} %>
+ 	<tr>
+  		<td colspan="3">
+    		<button class="btn btn-primary">글등록</button>
+  		</td>
+	</tr>
     </tbody>
   </table>
 </div>

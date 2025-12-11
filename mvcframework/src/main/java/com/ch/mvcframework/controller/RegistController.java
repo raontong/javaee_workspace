@@ -34,11 +34,19 @@ public class RegistController implements Controller{
 		
 		int result=boardDAO.insert(board);// 등록시키기
 		
-		// 등록후 성공시, 게시물 목록을 보여ㅏ줘야함..
-		response.sendRedirect("/board/list.jsp");// 
-		
-		
-		}
+		// 등록후 성공시, 게시물 목록을 보여 줘야함..
+		// 아래 코드로 쓰면 디스패치로 사용 목적이라  여기서 사용하면 안됨 (파일명 바꾸면 유지보수가 어렵다) 
+		//response.sendRedirect("/board/list.jsp"); 
+	}
+	// DIspatcherServet (프런트 컨트롤러)  이 보여줘야할 페이지 정보를 반환
+	// 
+	public String getViewName() {
+		return "/board/regist/result";
+	}
+	@Override
+	public boolean isForward() {
+		return false; // 포워딩이 아닌 브라우저로 하여금 재접속 하라는 의미
+	}
 }
 
 

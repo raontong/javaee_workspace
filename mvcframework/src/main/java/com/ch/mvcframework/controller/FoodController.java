@@ -36,4 +36,14 @@ public class FoodController implements Controller {
 		RequestDispatcher dis=request.getRequestDispatcher("/food/result.jsp"); // 포워딩 하고 싶은 URl
 		dis.forward(request, response);
 	}
+	@Override
+	public String getViewName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public boolean isForward() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

@@ -22,7 +22,7 @@ public class PropTest {
 		 * */
 		Properties props=new Properties(); // 일반, 추상, 인터페이스
 		try {
-			FileInputStream fis=new FileInputStream("C:\\javaee_workspace\\mvcframework\\src\\main\\webapp\\WEB-INF\\servlet-mapping.txt");
+			FileInputStream fis=new FileInputStream("C:/javaee_workspace/mvcframework/src/main/webapp/WEB-INF/servlet-mapping.txt");
 				props.load(fis); // 이 시점 파일을 로드한 상태
 				String value=props.getProperty("/movie.do");
 				System.out.println(value);

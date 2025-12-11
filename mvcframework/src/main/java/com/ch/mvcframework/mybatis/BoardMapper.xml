@@ -5,10 +5,49 @@
 			이 xml 에 접근할때는 네임스페이스와 id 를 이용하여 간접적으로 쿼리를 수행한다.
 	 -->
 
-	<!-- 글 1건 등록  -->	
+	<!-- 글 1건 등록  (매퍼라고함)-->	
 	<insert id="insert" parameterType="Board">
 		insert into board(title, writer, content) 
 		values(#{title},#{writer},#{content})
 	</insert>
 
+	<!-- 모든글 가져오기  
+			개발자가 resultType 에 DTO를 명시해야만, select 절에 들어있는 컬럼의 값을 
+			이 DTO에 자동으로 채워준다. 이렇듯 데이터베이스의 컬럼과 java객체간의
+			데이터 메핑을 자동으로 해준다고 하여 mybatis 같은 프레임워크를 가리켜 
+			hibernat - ORM
+			Mybatis - SQL Mapper 
+			주의) select 쿼리 실행 후 반환되는 레코드가 여러건일 경우, 
+			mybatis 는 자동으로 내부적으로 java.util.List 를 생성하고, 
+			resultType으로 지정한 DTO를 List 에 자동으로 채워 넣는다
+			따라서 개발자는 아래의 id 를 호출한후 반환받는 데이터가 List 이다. 
+	 -->
+	<select id="selectAll" resultType="Board">
+		select board_id, title, writer, content, regdate, hit 	from board order by board_id desc
+	</select>
+	
+	<!-- 게시물 1건 가져오기 
+			select문에 의한 레코드 반환 수가 1건 일때는 List 가 반환되지 않는다.
+			대신 1건의 레코드를 담은 DTO가 반환된다.
+	-->
+	<select id="select" parameterType="int" resultType="Board">
+		select board_id, title, writer, content, regdate, hit from board where board_id=#{board_id}
+	</select>
+	
+	<!--1건 삭제  -->
+	<delete id="delete" parameterType="int">
+		delete from board where board_id=#{board_id}
+	</delete>
+	
+	<!--1건 수정  -->
+	<update id="update" parameterType="Board">
+		update board set title=#{title}, writer=#{writer}, content=#{content}
+		where board_id=#{board_id}
+	</update>
+	
 </mapper>
+
+
+
+
+

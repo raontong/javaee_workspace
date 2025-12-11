@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Properties;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -131,6 +132,22 @@ public class DispatcherServlet extends HttpServlet{
 			// 즉 자료형은 부모형이지만, 동작은 자식 자료형으로 할 경우 현실의 생물의 다양성을 반영하였다고 하여ㅏ 다형성(=polymorphism) 이라한다.
 			controller.execute(request, response); // 메서드 호출
 			
+			// 아래의 viewName에는 실제 jsp가 들어있는것이 아니라, 검색 키만 들어있으므로,
+			// DispatcherServlet 은 다시 servlet-mapping.txt 파일을 검색하여, 실제 jsp 파일을 얻어, 클라이언트에게 응답을 해야함  
+			String viewName=controller.getViewName();
+			
+			String viewPage=props.getProperty(viewName); // 뷰의 이름으로 jsp 열기
+			System.out.println("이 요청에 의해 보여질 응답페이지는 "+ viewPage);
+			
+			// 하위 컨트롤러가 포워딩하라고 부탁한 경우에 포워딩 처리
+			if(controller.isForward()) {
+				RequestDispatcher dis=request.getRequestDispatcher(viewPage);
+				dis.forward(request, response);
+				
+			} else {
+				
+				response.sendRedirect(viewPage); // 클라이언트로 하여금 재접속할 것을, 응답정보에 추가
+			}
 				
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

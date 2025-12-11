@@ -20,6 +20,15 @@ public interface Controller {
 	// 또한 자식마다, 구현 내용이 다르므로, 이 시점에 아래의 메서드
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException; // 자식들을 execute()로 통일해 
 		
-		
+	// 모든 하위 컨트롤러가 구현해야 할 메서드 추가
+	// 그리고 메서드의 몸체는 두지 않는다. 즉 불완전하게 해야, 추상메서드가 되고, 이 메서드에 대한 완성은 자식들에게 맡김(구현강제)
+	public String getViewName();
+	
+	// 하위 컨트롤러가 jsp 까지 데이터를 살려서 유지할 일이 있을 경우엔 요청에 대한 응답을 하면안되고
+	// 반드시 포워딩으로 처리가 되어야 한다. 따라서 하위 컨트롤러는 DispatcherServlet 에게 해당 요청이 포워딩 대상인지 아닌지에 대한
+	// 판ㄷ간을 위한 논리값을 반호나하는 메서드를 제공해 주어야한다.
+	public boolean isForward();
+	
+	
 	
 }

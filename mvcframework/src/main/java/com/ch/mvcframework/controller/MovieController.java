@@ -65,6 +65,16 @@ public class MovieController implements Controller{
 		// 위의 판단결과를 여기서 출력하면 MVC  위배됨.. 따라서 판단결과를 별도의 디자인 영역에서 보여줘야한다.!!
 		// response.sendRedirect("/movie/modelk2/result.jsp"); // <scrip>location.href=url</script> 같다
 	}
+	@Override
+	public String getViewName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public boolean isForward() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
 
 
