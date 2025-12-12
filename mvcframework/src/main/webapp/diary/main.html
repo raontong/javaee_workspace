@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--CSS 불러오기-->
+    <link rel="stylesheet" href="../css/style.css">
+    <!--jQuery 불러오기-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!--Box.js 불러오기-->
+    <script src="../js/Box.js"></script>
+    <script>
+        /*자바스크립트의 내장객체의 종류
+        1) String 
+        2) Math
+        3) Array
+        4) Date ==>
+        5) JSON
+                
+        */
+
+        let dayArray=["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+
+        /*--------------------------------------
+        [1] content div 박스 출력
+        ---------------------------------------*/ 
+        function createBox(){
+            // 요일박스
+            for(let i=0; i<dayArray.length; i++){
+                let box=new Box(document.querySelector(".days"), i*100, 0, 100, 50, "pink", dayArray[i]);
+            }
+
+            // 날짜 박스
+            let n=0; // 박스의 순번
+            for(let a=0; a<6; a++){ // 층수 만큼
+                for(let i=0; i<dayArray.length; i++){ // 호수 만큼
+                    // constructor(container, x, y, width, height, bg)
+                    let box=new Box(document.querySelector(".content"), i*100, a*100, 100, 100, "yellow", n);
+                    n++;
+                }
+            }
+        }
+
+        
+        $(()=>{
+            createBox();
+
+        });
+
+    </script>
+</head>
+<body>
+   
+    <div class="container">
+        <div class="header">
+            <button>이전</button>
+            <span>2025년 12월</span>
+            <button>다음</button>
+        </div>
+    
+        <div class="days"></div>
+        <div class="content"></div>
+    </div>
+
+</body>
+</html>

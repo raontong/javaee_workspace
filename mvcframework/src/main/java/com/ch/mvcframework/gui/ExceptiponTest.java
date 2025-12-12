@@ -23,7 +23,7 @@ public class ExceptiponTest {
 		
 		arr[3]=4;
 		} catch(Exception e) {
-				e.printStackTrace() // 개발자를 위한 처리
+				e.printStackTrace(); // 개발자를 위한 처리
 			System.out.println("프로그램 이용에 불편을 드려 죄송합니다."); // 일반 유저들을 위한 처리
 		}
 		System.out.println("여기");
