@@ -1,9 +1,10 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page import="java.util.List" %>
-<%@ page import="com.sh.shop.dto.TopCategory" %>
+<%@ page import="com.ch.shop.dto.TopCategory" %>
 
 <%
 	List<TopCategory> topList=(List)request.getAttribute("topList");
+	// out.print(topList.size());
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,20 +64,22 @@
 	              <form>
 	                <div class="card-body">
 	                
-						<div class="form-group row">
-						  <div class="col-md-6">
-						    <select class="form-control" name="topCategory">
-						    </select>
-						  </div>
-						</div>
-
-	                	
-						<div class="form-group row">
-						  <div class="col-md-6">
-						    <select class="form-control" name="topCategory">
-						    </select>
-						  </div>
-						</div>
+	                	<div class="form-group row">
+		              		<div class="col-md-6">
+			              		<select class="form-control" name="topCategory">
+								    <% for (TopCategory topCategory : topList) { %>
+								        <option value="<%=topCategory.getTopCategory_id() %>"><%= topCategory.getTopName() %>
+								        </option>
+								    <% } %>
+		                        </select>
+		              		</div>
+	
+		              		<div class="col-md-6">
+			              		<select class="form-control">
+		                          <option>option 1</option>
+		                        </select>
+		              		</div>
+	              		</div>
 
 	                	
 	                	
@@ -147,11 +150,36 @@
 	<%@ include file="../inc/footer_link.jsp" %>
 	
 	<script>
-  
+  	function getSubCategory(){
+  		// jquery 의 비동기 통신
+  		$.ajax({
+  			url:"/admin/subcategory/list",  // 하위 카테고리에 대한 요청을 받을 수 있는자  =
+  			method: "GET",
+  			
+  			// 요청후 서버에서  응답이 도착했을때 동작할 속성 미ㅏㅊ 콜백함수 정의
+  			// 서버의 응답이 200번대 이면 아래의 success 에 명시된 익명함수가 동작하고,
+  			// result : 서버에서 보낸 데이터, status 서버의 상태, xhr XMLHttpRequest 객체
+  			success:function(result,status,xhr) {
+  				
+  			},
+  			
+  			// 서버의 응답이 300번대 이상이면, 즉 문제가 있을 경우 error 속성에 명시된 익명함수가 동작함
+  			error:function(xhr,status,err){
+  				
+  			}
+  		});
+  	}
 		$(()=>{
 			$("#summernote").summernote()
+		
+			// 상위카테고리의 select 상자의 값을 변경할때, 비동기방식으로ㅓ 즉 새로고침 ㅇ벗이 하위 카테고리를 출력해주면
+			// 유저들이 불편함을 겪지 안헥 된다.
+			// 지금까지는 js 순수 코드를 이용하여 비동기 통신을 수행했지만, 이번 프로그램에서는 jquery가 지원하는 비동기 통신 방법을 써보자
+			$("select[name='topcategory']").change(()=>{
+				getSubCategory();
+			});
+		
 		});
-	
 	</script>
 	
 </body>
