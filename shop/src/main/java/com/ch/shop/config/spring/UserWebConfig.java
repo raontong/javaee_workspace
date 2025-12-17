@@ -1,7 +1,5 @@
 package com.ch.shop.config.spring;
 
-
-
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
@@ -114,7 +112,7 @@ public class UserWebConfig extends WebMvcConfigurerAdapter{
    // DispatcherServlet은 컨트롤러에 대한 매핑만 수행하면 되며, 정적 자원(css, js,  html, image등)에 대해서는 직접 처리하지 않게 하기
    // 여기서는 DispatcherServlet이 관여하지 않음
    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-      registry.addResourceHandler("/static/**").addResourceLocations("/resources");
+      registry.addResourceHandler("/static/**").addResourceLocations("/resources/");
    }
    
    

@@ -8,7 +8,6 @@ public class BoardException extends RuntimeException {
 	// 이유? 생성자는 해당 객체만의 초기화 작업에 사용되므로, 만일 부모의 생성자 마저도 물려받게 되면, 내가 부모가 되어버리는 개념
 	public BoardException(String msg) {
 		super(msg); // 에러 메시지를 담을 수있는 부모의 생성자 호출
-		
 	}
 	
 	public BoardException(String msg, Throwable e) {
