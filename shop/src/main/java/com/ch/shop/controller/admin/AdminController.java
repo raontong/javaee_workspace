@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 // 그러기 위해서는 개발자가 이 클래스가 검색 될 수 있도록 제대로 된 패키지명을 등록해야 함..
 public class AdminController {
 	// 관라자 모드의 메인인 대시보드 요청을 처리
-	@GetMapping("/admin/main")
+	@GetMapping("/main")
 	public String main() {
 		return "admin/index";
 	}

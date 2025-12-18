@@ -2,6 +2,42 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
   <display-name>shop</display-name>
   
+  	<!-- 
+  		서버가 가동될때를 감지하는 리스너 등록  
+  		servletCiontext 에 대한 초기설정을 위해서는 서버가 가동되는 시점에 동작하는 리스너를 이용해야함
+  	-->
+  	<context-param>
+		<param-name>contextClass</param-name>
+		<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+	</context-param>
+  	
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>com.ch.shop.config.spring.RootConfig</param-value> <!-- 모델객체를명시해놓은자바설정클래스 --> 
+	</context-param>
+	
+	 <!--
+	 	애플리케이션이 가동되는 시점에 SErvletCointext 를 엉와, AnnotationConfigWebApplicationContext 컨테이너에
+	 	설정파일을 이용하여 빈들을 생성하게 하려고..  
+	 -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>  	
+  
+  
+  <!-- 
+  	MVC 에서 모델 영역은 모든 요청 서블릿들 간 공유가 되어야 하는 공통기능이므로, 특정 서블릿의 수준으로
+  	등록하면 안된다..
+  	이유) 관리자용 서블릿에 등록해버리면, 쇼핑몰 유저가 톰켓 가동과 동시에 먼저 접근하게 될경우
+  	모델 객체들이 아직 인스턴스가 생성 이전 시점이므로, 모델 객체들을 사용할 수 없게 된다.
+  
+  	해결책) 특정 서블릿에 소속되게 하지말고 , 생명력을 훨신 더 끌어올려서 스프링빈 컨테이너를 관리하게 하자
+   			즉, 생명력이 길고, 서버를 가동하는 시점부터 태어나는 객체를 이용하면 된다.
+   			javaee에서 서버가동가 동시에 생성되어, 서버 종료시까지 생명력을 유지하는 객체인
+   			즉 애플리케이션의 전역 정보를 가진 객체인 ServletContext 에게 맡기면 된다.
+  	참고) ServletConText 의 JSP 의 내장객체명은 ? application 
+   -->
+    
 	<!-- 
 		필터
 		javaEE 기술에서는 서블릿의 요청 처리보다 앞선 객체가 지원되는데, 이 객체를 저으이해놓으면 무조건요청이 이 개겣를 거처서 
@@ -27,9 +63,11 @@
 		우리가 제작한 MVC 프레임워크와 마찬가지로, 스프링 MVC 또한 모든 요청을 하나의 진입점으로 몰아넣는다.
 		즉, 프런트(맨앞)에 유일한 컨트롤러 하나를 둔다
 	 -->
+	 
+	 
 	   <!-- 글 삭제 요청 처리 서블릿  -->
 	<servlet>
-    	<servlet-name>dispatcher</servlet-name>
+    	<servlet-name>admin-dispatcher</servlet-name>
       	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
       
       <!-- init-param 이란 이 서블릿의 인스턴스가 최초에 생성되어질때, 
@@ -46,12 +84,31 @@
 	    
 	     <init-param>
 	     	<param-name>contextConfigLocation</param-name>
-	     	<param-value>com.ch.shop.config.spring.UserWebConfig</param-value>
+	     	<param-value>com.ch.shop.config.spring.AdminWebConfig</param-value>
 	     </init-param>
   	</servlet>
   
 	<servlet-mapping>
-	  	<servlet-name>dispatcher</servlet-name>
+	  	<servlet-name>admin-dispatcher</servlet-name>
+	  	<url-pattern>/admin/*</url-pattern>
+	</servlet-mapping>
+	
+	
+	<!-- 관리자가 아닌 일반 사용자들의 요청을 처리할  DispatcherServlet -->
+	<servlet>
+    	<servlet-name>shop-dispatcher</servlet-name>
+      	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+	  		<param-name>contextClass</param-name>
+	     	<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+	    </init-param>
+	     <init-param>
+	     	<param-name>contextConfigLocation</param-name>
+	     	<param-value>com.ch.shop.config.spring.ShopWebConfig</param-value>
+	     </init-param>
+  	</servlet>
+	<servlet-mapping>
+	  	<servlet-name>shop-dispatcher</servlet-name>
 	  	<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	

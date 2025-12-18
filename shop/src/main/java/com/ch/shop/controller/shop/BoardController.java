@@ -29,7 +29,7 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService; // DI 준수해야 하므로, 상위객체를 보유
 	
-	// 글쓰기 폼 요청 처리 - jsp 가 web-inf 밑으로 위치하였으므로, 브라우저에서 jsp를 직접 전근할수 없다.
+	// 글쓰기 폼 요청 처리 - jsp 가 web-inf 밑으로 위치하였으므로, 브라우저에서 jsp 를 직접 접근할수 없다.
 	// 따라서 아래의 컨트롤러의 메서드에서  /board/write.jsp 를 매핑걸자
 	@RequestMapping("/board/registform")
 	public ModelAndView registForm() {
@@ -133,7 +133,7 @@ public class BoardController {
 	
 	/*
 	 * 스프링의 컨트롤러에서는 예외의 발생을 하나의 이벤트로 보고,  이 이벤트를 자동으로 감지하여
-	 * 에러를 처리할 수 있는 @@ExceptionHandler 를 지원해줌
+	 * 에러를 처리할 수 있는 @ExceptionHandler 를 지원해줌
 	 * */
 	// 현재 컨트롤러에 명시된 요청을 처리하는 모든 메서드내에서 BoardException 이 발생하면 이를 자동으로 감짛여, 아래의 메서드를 호출해줌
 	// 이때 메서드를 호출해 주면서, 매개변수로 예외 객체의 인스턴스를 자동으로 넘겨줌
