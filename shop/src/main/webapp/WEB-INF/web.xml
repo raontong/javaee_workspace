@@ -86,8 +86,16 @@
 	     	<param-name>contextConfigLocation</param-name>
 	     	<param-value>com.ch.shop.config.spring.AdminWebConfig</param-value>
 	     </init-param>
+	     
+	     <!-- 업로드 관련 설정 -->
+	     <multipart-config>
+	     	<location>C:\shopdata\temp</location><!-- 이미지가 임시로 저장할 곳 -->
+	     	<max-file-size>1048576</max-file-size> <!-- 파일 1개의 최대용량 1M 제한  -->
+	     	<max-request-size>3145728</max-request-size> <!-- 요청 전체 크기 3M 제한 -->
+	     	<file-size-threshold>0</file-size-threshold> <!--0일 경우 무조건 디스크 사용  -->
+	     </multipart-config>
   	</servlet>
-  
+  	
 	<servlet-mapping>
 	  	<servlet-name>admin-dispatcher</servlet-name>
 	  	<url-pattern>/admin/*</url-pattern>

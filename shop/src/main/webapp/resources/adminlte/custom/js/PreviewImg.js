@@ -5,7 +5,7 @@
 class PreviewImg{
 	constructor(container, file, src, width, height){
 		this.container=container;
-		this.file=file;
+		this.file=file; // 자바스크립트의 배열내에서 이 파일이 몇번째에 들어있는지 조사하기 위한 용도로 FIle을 넘겨받아 보관해놓자!!
 		this.src=src;
 		this.width=width;
 		this.height=height;
@@ -34,5 +34,30 @@ class PreviewImg{
 		this.wrapper.appendChild(this.header);
 		this.wrapper.appendChild(this.img);
 		this.container.appendChild(this.wrapper);
+		
+		// X자에 이벤트 연결
+		this.header.addEventListener("click",(e)=>{
+			console.log("지울꺼야");
+			
+			//링크를 누를때마다 스크롤이 자꾸 원상태로 돌아오는 현상의 이유?
+			// a태그를 사용자가 클릭하면, 기본적으로 y축을 0 으로 위치시키는 특징떄문임..
+			// 해결책? 기본 특징을 제거하자 
+			e.preventDefault(); // a 태그에 의해 스크롤 위로 이동하는 현상 방지
+			
+			this.remove();
+		});		
+		
 	}
+	
+	// 삭제 메서드
+	remove(){
+		// product-preview 컨테이너 안에 있는 나의 wrapper 를 지운다!!
+		this.container.removeChild(this.wrapper); // 화면에ㅐ서 제거
+		
+		// 화면에서 제거되었다고 하여 안심하면 안된다!!
+		// 이유? 제거된 최종 결과를 결국 서버로 전송할 것으므로, 화면에서 제거했다면 원본 배열도 함께 제거해야한다.
+		selectedFile.splice(1, selectedFile.indexOf(this.file));// 1, 유저가 선택한 객체의 배열내에서의 index
+		
+	}
+	
 }

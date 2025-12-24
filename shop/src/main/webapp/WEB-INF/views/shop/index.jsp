@@ -75,6 +75,7 @@
                                 <h4>Menâs fashion</h4>
                                 <p>358 items</p>
                                 <a href="#">Shop now</a>
+                                
                             </div>
                         </div>
                     </div>

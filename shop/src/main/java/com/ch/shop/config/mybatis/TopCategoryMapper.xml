@@ -7,5 +7,4 @@
 		select topcategory_id, topname from topcategory
 	</select>
 	
-	
 </mapper>

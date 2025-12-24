@@ -35,6 +35,6 @@
 	</root>
 	<!-- 아래처럼 패키지별로 로그 레벨을 설정하면 , 더 구체적일 수록 로그의 적용 우선순위가 높아지므로
 			위에서 root 로그 레벨을 선언하였다 할지라도 아래의 DEBUG 로그가 우선 적용된다  -->
-	<logger name="com.ch.shop.controller" level="DEBUG"/>
+	<logger name="com.ch.shop" level="DEBUG"/>
 	
 </configuration>

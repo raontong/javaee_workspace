@@ -23,7 +23,7 @@ import lombok.extern.slf4j.Slf4j;
  왜? 모든 요청마다 1:1 대응하는 클래스 기반이 아니라, 메서드 기반이기 뗴문...
  */
 @Slf4j
-@Controller // ComponentScan 의 대상이 되어, 자동 인스턴스 생성을 원함
+//@Controller // ComponentScan 의 대상이 되어, 자동 인스턴스 생성을 원함
 public class BoardController {
 	
 	@Autowired

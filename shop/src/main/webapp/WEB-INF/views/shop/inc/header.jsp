@@ -11,7 +11,7 @@
                     <nav class="header__menu">
                         <ul>
                             <li class="active"><a href="./index.html">Home</a></li>
-                            <%for(TopCategory topCategory : topList){%>
+                            <%for(TopCategory topCategory  : topList){%>
                             	<li><a href="#"><%=topCategory.getTopname()%></a></li>
                             <%} %>
                             <li><a href="./shop.html">Shop</a></li>

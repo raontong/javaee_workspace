@@ -1,31 +1,12 @@
 package com.ch.shop.config.spring;
 
-import java.util.List;
-
-import javax.naming.NamingException;
-import javax.sql.DataSource;
-
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.mybatis.spring.SqlSessionFactoryBean;
-import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-import org.springframework.jndi.JndiTemplate;
-import org.springframework.transaction.PlatformTransactionManager;
-import org.springframework.web.servlet.config.annotation.AsyncSupportConfigurer;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
-
-import com.ch.shop.controller.shop.BoardController;
-import com.ch.shop.model.board.MybatisBoardDAO;
-import com.ch.shop.model.board.BoardServiceImpl;
 
 /*이 클래스는 로직을 작성하기 위함이 아니라, 애플리케이션에서 사용할 빈(객체)들 및 그들간의 관계(weaving)을 명시하기 위한 설정 목적의 클래스이며
  * 쇼핑몰의 일반 유저들이 보게되는 애플리케이션쪽 빈들을 관리한다.*/
@@ -42,42 +23,11 @@ import com.ch.shop.model.board.BoardServiceImpl;
 // MVC에서의 특정 분류가 딱히 없음에도 자동으로 올리고 싶다면 @Component
 @ComponentScan(basePackages = {"com.ch.shop.controller.admin"})
 public class AdminWebConfig extends WebMvcConfigurerAdapter{
-   
-	// DispatcherServlet이 하위 컨트롤러로부터 반환받은 결과 페이지에 대한 정보는 사실 완전한 JSP경로가 아니므로
-	// 이를 해석할 수 있는 자인 ViewResolver에게 맡겨야 하는데,
-	// 이 ViewResolver중 유달리 접두어와 접미어 방식을 이해하는 뷰 리절버를 InternalResourceViewResolver라고 한다.
-	// 개발자는 이 객체에게 접두어와 접미어를 사전에 등록해놓아야 한다.
+	
+	/* 아파치 파일 업로드 컴포넌트를 빈으로 등록 */
 	@Bean
-	public InternalResourceViewResolver viewResolver() {
-		InternalResourceViewResolver rv = new InternalResourceViewResolver();
-		// 접두어 등록 /WEB-INF-views/  board/list   .jsp
-      
-		// 접두어 등록
-		rv.setPrefix("/WEB-INF/views/");
-		// 접미어 등록
-		rv.setSuffix(".jsp");
-		return rv;
+	public CommonsMultipartResolver multipartResolver() {
+		CommonsMultipartResolver resolver = new CommonsMultipartResolver();
+		return resolver;
 	}
-   
-   // 스프링 프레임웍을 지배하는 개발 원리 중 하나인 DI를 구현하려면 개발자는 사용할 객체들을 미리 빈으로 등록해야 한다.
-   // bean으로 등록해도 되지만 dao는 워낙 유명해서 해당 클래스에 @Repository를 명시하고  
-   // @ComponentScan(basePackages="com.ch.shop.controller") 의 형태로 이 파일에 기입하여 "해당 파일 하위에 있는 모든 클래스(클래스에 @표기가 되어있는것들은 전부 찾아)에 적용한다"는 뜻으로 기재하기!
-   
-   // DispatcherServlet은 컨트롤러에 대한 매핑만 수행하면 되며, 정적 자원(css, js,  html, image등)에 대해서는 직접 처리하지 않게 하기
-   // 여기서는 DispatcherServlet이 관여하지 않음
-	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		
-		//registry.addResourceHandler("브라우저로 접근할 주소").addResourceLocations("웹애플리케이션을 기준으로 실제 정적자원이 있는 위치");
-		// 여기서는 /resources/adminlte/index.html -> /static/adminlte/index.html
-		registry.addResourceHandler("/static/**").addResourceLocations("/resources/");
-	}
-	
-	// Jackson 라이르러리 사용을 설정
-	// conf 누루고 5번째 아래 클릭
-	@Override
-	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-		converters.add(new MappingJackson2HttpMessageConverter()); // jacson 객체를 넣기
-
-	}
-	
 }

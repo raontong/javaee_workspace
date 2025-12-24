@@ -10,11 +10,11 @@ import org.springframework.stereotype.Repository;
 public class MybatisSubcategoryDAO implements SubCategoryDAO {
 
     @Autowired
-    private SqlSessionTemplate sessionTemplate;
+    private SqlSessionTemplate sqlsessionTemplate;
 
     @Override
     public List selectByTopCategoryId(int topcategoryId) {
-        return sessionTemplate.selectList("SubCategory.selectByTopCategoryId", topcategoryId);
+        return sqlsessionTemplate.selectList("SubCategory.selectByTopCategoryId", topcategoryId);
 
     }
 }
