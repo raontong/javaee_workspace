@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jndi.JndiTemplate;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -35,6 +36,11 @@ public class ShopWebConfig extends WebMvcConfigurerAdapter{
 	@Bean
 	public JndiTemplate jndiTemplate() {
 		return new JndiTemplate();
+	}
+	
+	@Bean
+	public RestTemplate restTemplate() {
+		return new RestTemplate();
 	}
 	
 	/*----------------------------------------------------------
@@ -70,9 +76,10 @@ public class ShopWebConfig extends WebMvcConfigurerAdapter{
 		google.setClientSecret(googleClientSecret);
 		google.setAuthorizeUrl("https://accounts.google.com/o/oauth2/v2/auth");  //  google  api  문서에
 		google.setTokenUrl("https://oauth2.googleapis.com/token");
+		google.setUserInfoUrl("Https://openidconnect.googleapis.com/v1/userinfo");
 		google.setScope("openid email profile"); // 사용자에 대한 접근 범위
-		google.setRedirectUrlString("http://localhost:8888/login/callback/google");
-		
+		google.setRedirectUri("http://localhost:8888/login/callback/google");
+	
 		map.put("google", google);
 		
 		// 네이버 등록
