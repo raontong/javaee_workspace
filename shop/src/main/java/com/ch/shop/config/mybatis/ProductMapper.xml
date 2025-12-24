@@ -16,15 +16,27 @@
 				select last_insert_id() as product_id
 			</selectKey>
 	</insert>
+	<!-- mybatis 에 의해 DTO와 컬럼명이 일치하지 않을 경우 자동 매핑이 실행될 수 없으므로
+			이 시점부터는 개발자가 나서서 수동으로 매핑을 시도할 수 있다
+	 -->
+	<resultMap id="productMap" type="Product">
+		<id column="product_id" 				property="product_id" />
+		<result column="product_name" 	property="product_name"/>
+		<result column="brand" 				property="brand"/>
+		<result column="price" 					property="price"/>
+		<result column="discount" 			property="discount"/>
+		<result column="introduce"			property="introduce"/>
+		<result column="detail" 				property="detail"/>
+		
+		<!-- 다른테이블의 레코드 1건을 가져오기 ==>     join 문안쓰고 찿아나설거야         자료형 (클래스명)    -->
+		<association column="subcategory_id" property="subCategory" javaType="SubCategory" select="SubCategory.select"/>
+	</resultMap>
 	
-	<!-- 모든상품 가져오기 -->
-	<select id="selectAll" resultType="Product">
+	<!-- 모든상품 가져오기  원래 join문으로 써야하는데 mybatis 는 위코드 처럼 resultMap 로 수동으로 매핑!! -->
+	<select id="selectAll" resultMap="productMap">
 		select product_id, product_name, brand, price, discount, introduce, detail, subcategory_id
 		from product
 		
-<!-- 		select product_id, product_name, brand, price, discount, introduce, detail, subcategory_id, filename
-		from product p inner join product_img m
-		on p.product_id=m.product_id  -->
 	</select>
 	
 </mapper>

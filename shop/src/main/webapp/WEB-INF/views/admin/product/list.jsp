@@ -92,7 +92,7 @@
 	                    <tr>
 	                      <td>1</td>
 	                      <td><img src=""></td>
-	                      <td><%//=product.getSubCategory().getSubcategory_id() %></td>
+	                      <td><%=product.getSubCategory().getSubname()%></td>
 	                      <td><%=product.getProduct_name() %></td>
 	                      <td><%=product.getBrand() %></td>
 	                      <td><%=product.getPrice() %></td>

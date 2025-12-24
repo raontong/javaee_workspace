@@ -6,4 +6,9 @@
 		select subcategory_id, subname from subcategory where topcategory_id=#{topcategory_id}
 	</select>
 	
+	<!-- pk 값으로 레코드 1건 가져오기  -->
+	<select id="select" parameterType="int" resultType="SubCategory">
+		select * from subcategory where subcategory_id=#{subcategory_id}
+	</select>
+	
 </mapper>
