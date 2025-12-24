@@ -4,4 +4,10 @@
 	<insert id="insert" parameterType="ProductImg">
 		insert into product_img(filename, product_id) values(#{filename}, #{product.product_id})
 	</insert>
+	
+	<select id="selectByProductId" parameterType="int" resultType="ProductImg">
+		select * from product_img where product_id=#{productId}
+
+	</select>
 </mapper>
+

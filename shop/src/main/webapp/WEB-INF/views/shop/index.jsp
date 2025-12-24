@@ -1,10 +1,9 @@
 <%@page import="com.ch.shop.dto.TopCategory"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ page import="java.util.List"%>
+<%@ page import="java.util.List" %>
 <%
 	List<TopCategory> topList = (List)request.getAttribute("topList");
 %>
-
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -15,14 +14,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ashion | Template</title>
-	
-	<%@ include file="./inc/head_link.jsp" %>
-	
+
+    <%@ include file="./inc/head_link.jsp" %>
 </head>
 
 <body>
     <!-- Page Preloder -->
-	<%@ include file="./inc/preloader.jsp" %>
+    <%@ include file="./inc/preloader.jsp" %>
 
     <!-- Offcanvas Menu Begin -->
     <div class="offcanvas-menu-overlay"></div>
@@ -75,7 +73,6 @@
                                 <h4>Menâs fashion</h4>
                                 <p>358 items</p>
                                 <a href="#">Shop now</a>
-                                
                             </div>
                         </div>
                     </div>
@@ -607,18 +604,15 @@
 <!-- Services Section End -->
 
 <!-- Instagram Begin -->
-
 <%@ include file="./inc/insta.jsp" %>
 <!-- Instagram End -->
 
 <!-- Footer Section Begin -->
 <%@ include file="./inc/footer.jsp" %>
 <!-- Footer Section End -->
-<!-- Search Begin -->
-<!-- Search End -->
 
 <!-- Js Plugins -->
-
-</body>
 <%@ include file="./inc/footer_link.jsp" %>
+</body>
+
 </html>

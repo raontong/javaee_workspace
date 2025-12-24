@@ -45,19 +45,21 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/admin/product/registform" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>상품등록</p>
-                </a>
-              </li>
-			<ul class="nav nav-treeview">
+
               <li class="nav-item">
                 <a href="/admin/product/list" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>상품목록</p>
                 </a>
               </li>
+              
+              <li class="nav-item">
+                <a href="/admin/product/registform" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>상품등록</p>
+                </a>
+              </li>
+              
               <li class="nav-item">
                 <a href="./index2.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>

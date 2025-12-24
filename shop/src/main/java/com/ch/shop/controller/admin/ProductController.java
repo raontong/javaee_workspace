@@ -98,10 +98,9 @@ public class ProductController {
 		log.debug("상세설명 "+product.getDetail());
 		
 		/*-------------------------------------------------------------------
-		 넘겨받은 파라미터를 이용하여, 상품 등록 
-		 상품 등록이란 논리적 업무1개 단위 안에
-		 (product, product_img, product_size, product_color 까지 4개의 업무가 포함됨)
-		 하지만, 컨트롤러는 4개의 업무로 이루어져 있다는 사실을 몰라야 한다..(대신 서비스가 알아야 한다) 
+		 * 넘겨받은 파라미터를 이용하여, 상품 등록 
+		 * 상품 등록이란 논리적 업무1개 단위 안에(product, product_img, product_size, product_color 까지 4개의 업무가 포함됨)
+		 * 하지만, 컨트롤러는 4개의 업무로 이루어져 있다는 사실을 몰라야 한다..(대신 서비스가 알아야 한다) 
 		 -------------------------------------------------------------------*/
 		try {
 			productService.regist(product);
@@ -127,14 +126,16 @@ public class ProductController {
 		//jackson 라이브러리를 이용한 자바 객체의 반환으로 처리를 좀더 효율적으로 하자 
 		Map<String, String> body = new HashMap<>();
 		body.put("message", "상품등록 성공");
+		
 		return body;
 	}
 	
-	//상품 목록 페이지 요청 처리
+	//상품 목록 페이지 요청 처리 
 	@GetMapping("/product/list")
 	public String getListPage(Model model) {
-		List productList=productService.getList(); //3단계 모델에 일 시키기
-		model.addAttribute("productList", productList);
+		List productList=productService.getList();//3단계: 모델에 일시키기
+		model.addAttribute("productList", productList); //4단계 결과 저장 
+		
 		return "admin/product/list";
 	}
 	
@@ -149,6 +150,7 @@ public class ProductController {
 		return productList;
 	}
 	
+	
 	//스프링에서는 컨트롤러의 요청 처리 메서드들 중 예외가 발생할 경우, @ExceptionHandler가 명시된 메서드가
 	//자동으로 호출된다. 
 	@ExceptionHandler({ProductException.class, UploadException.class, DirectoryException.class, ProductColorException.class, ProductSizeException.class, ProductImgException.class})
@@ -162,6 +164,9 @@ public class ProductController {
 		body.put("message", "등록실패");
 		
 		//클라이언트에게 응답코드를 보내지 않으면, 클라이언트는 성공이라고 생각함 
+		
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(body);
 	}
+	
+	
 }

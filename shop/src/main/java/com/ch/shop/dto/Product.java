@@ -13,8 +13,9 @@ public class Product {
 	private String brand;
 	private int price;
 	private int discount;
-	private List<Color> colorList;			// 색상
-	private List<Size> sizeList;				// 사이즈
+	private List<Color> colorList;						// 색상
+	private List<Size> sizeList;							// 사이즈
+	private List<ProductImg> productImgList;	// 이미지
 	private String introduce;
 	private String detail;
 	private SubCategory subCategory;	// 하위카테고리
@@ -27,8 +28,5 @@ public class Product {
 	// 디렉토리와 파일명으로 존재하게 됨.. 이때 임시디렉토리 안에 있는 파일은 개발자가 제어안해도됨..
 	
 	private MultipartFile[] photo;
-	
-	
-	
 	
 }

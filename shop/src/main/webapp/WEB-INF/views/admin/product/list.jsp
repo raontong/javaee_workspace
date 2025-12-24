@@ -1,7 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page import="java.util.List" %>
 <%@ page import="com.ch.shop.dto.TopCategory" %>
-<%@ page import="com.ch.shop.dto.Product" %>
+<%@ page import="com.ch.shop.dto.Product"%>
+<%@ page import="com.ch.shop.dto.ProductImg"%>
 <%
 	List<Product> productList=(List)request.getAttribute("productList");
 %>
@@ -53,7 +54,7 @@
         <!-- 메인 컨텐츠 시작 -->
         <div class="row">
         	<div class="col-md-12">
-        	
+				
 				<!-- 상품 목록 시작 -->
 				<div class="card">
 	              <div class="card-header">
@@ -76,29 +77,35 @@
 	                <table class="table table-hover text-nowrap">
 	                  <thead>
 	                    <tr>
-	                      <th>NO</th>
+	                      <th>No</th>
 	                      <th>이미지</th>
 	                      <th>하위카테고리</th>
 	                      <th>상품명</th>
-	                      <th>부랜드</th>
+	                      <th>브랜드</th>
 	                      <th>가격</th>
 	                      <th>할인가</th>
 	                    </tr>
 	                  </thead>
 	                  <tbody>
-	                  
-		                <%for(int i=0;i<productList.size();i++){ %>
-		                <%Product product = productList.get(i); %>
+	                  	
+	                  	<%for(int i=0;i<productList.size();i++){%>
+	                  	<%Product product = productList.get(i); %>
 	                    <tr>
 	                      <td>1</td>
-	                      <td><img src=""></td>
-	                      <td><%=product.getSubCategory().getSubname()%></td>
+	                      <%
+	                      	ProductImg productImg=product.getProductImgList().get(0);	
+	                      %>
+	                      <td>
+	                      	<%//="c:/shopdata/product/p"+product.getProduct_id()+"/"+productImg.getFilename()%>
+	                      	<img src="/photo/p<%=product.getProduct_id()%>/<%=productImg.getFilename()%>" width="30px">
+	                      </td>
+	                      <td><%=product.getSubCategory().getSubname() %></td>
 	                      <td><%=product.getProduct_name() %></td>
 	                      <td><%=product.getBrand() %></td>
 	                      <td><%=product.getPrice() %></td>
 	                      <td><%=product.getDiscount() %></td>
-	                    </tr>
-	                    <%} %>
+	                    </tr>	                    
+						<%}%>
 	                  </tbody>
 	                </table>
 	              </div>
@@ -123,30 +130,19 @@
 	<%@ include file="../inc/footer_link.jsp" %>
 	<script src="/static/adminlte/custom/js/PreviewImg.js"></script>
 	<script>
-		/* function getList(){
+		function getList(){
 			$.ajax({
-				url:"/admin/product/async/list", // web.xml /admin 을 먼저 만나기때문
+				url:"/admin/product/async/list", // web.xml에 /admin 을 먼저 만나야 하므로..
 				method:"GET",
 				success:function(result, status, xhr){
-					console.log("서버에서 받아온 상품목록은", result);
-				}
-		
-			});
-		} */
+					console.log("서버에서 받아온 상품목록은 ", result);		
+				}			
+			});			
+		}
 		
 		$(()=>{
-			getList();
+			//getList();			
 		});
 	</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
