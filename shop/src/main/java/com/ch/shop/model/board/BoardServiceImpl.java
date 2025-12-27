@@ -41,13 +41,13 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public void update(Board board) throws BoardException{ // 컨트롤러까지 예외 전달
-		boardDAO.update(board);
+	public void update(Board board) throws BoardException{//컨트롤러까지 예외 전달..
+		boardDAO.update(board);		
 	}
 
 	@Override
 	public void delete(int board_id) throws BoardException {
-		boardDAO.delete(board_id);
+		boardDAO.delete(board_id);		
 	}
 
 	
