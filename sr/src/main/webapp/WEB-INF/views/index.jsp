@@ -97,17 +97,17 @@
               <div class="container8">
                 <div class="container6">
                   <div class="the-personalized-in-home-care-your-pet-deserves">
-                    The personalized in- home
+                    손발이 척척 맞고
                     <br />
-                    care your pet deserves!
+                    긍정적인 에너지의 원천
                   </div>
                 </div>
                 <div class="heading-2-margin">
                   <div class="heading-22">
                     <div class="the-care-your-pet-deserves">
-                      your
+                      	시너지는 정말 
                       <br />
-                      pet deserves!
+						상상 이상
                     </div>
                   </div>
                 </div>

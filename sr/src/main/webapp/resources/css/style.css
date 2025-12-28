@@ -722,26 +722,25 @@ body, html {
 	gap: 0px;
 	align-items: center;
 	justify-content: flex-start;
-	width: 1440px;
+	width: 100%;
 	position: absolute;
 	left: 0px;
 	top: 130px;
 }
 
 .the-personalized-in-home-care-your-pet-deserves {
-	color: var(--color-red-53, #e33529);
-	text-align: center;
-	font-family: var(--dontboardmecom-bayon-regular-upper-font-family,
-		"Bayon-Regular", sans-serif);
-	font-size: var(--dontboardmecom-bayon-regular-upper-font-size, 30px);
-	line-height: var(--dontboardmecom-bayon-regular-upper-line-height, 30px);
-	letter-spacing: var(--dontboardmecom-bayon-regular-upper-letter-spacing, -0.6px);
-	font-weight: var(--dontboardmecom-bayon-regular-upper-font-weight, 400);
-	text-transform: uppercase;
-	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+    font-family: 'Bayon-Regular', sans-serif;
+    color: #e33529;
+    font-size: 35px;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: -5px; /* 글자가 크므로 자간을 더 줄이면 멋집니다 */
+    position: absolute;
+    margin-left: auto;  /* 폰트 자체의 미세한 여백까지 없애고 싶을 때 사용 */
+    z-index: 5; 
+    text-align: center;     
+    width: 100%;         /* 전체 너비를 차지하게 설정 */
+    transform: none;   
 }
 
 .heading-2-margin {
@@ -768,23 +767,23 @@ body, html {
 }
 
 .the-care-your-pet-deserves {
-	color: var(--color-red-53, #e33529);
-	text-align: center;
-	font-family: var(--dontboardmecom-semantic-heading-1-upper-font-family,
-		"Bayon-Regular", sans-serif);
-	font-size: var(--dontboardmecom-semantic-heading-2-upper-font-size, 40px);
-	line-height: var(--dontboardmecom-semantic-heading-2-upper-line-height, 45x);
-	letter-spacing: var(--dontboardmecom-semantic-heading-2-upper-letter-spacing, -3.72px);
-	font-weight: var(--dontboardmecom-semantic-heading-2-upper-font-weight, 40);
-	text-transform: uppercase;
-	position: relative;
-	display: block; /* flex 대신 block으로 변경해서 테스트해보세요 */
-	align-items: center;
+	font-family: 'Bayon-Regular', sans-serif;
+    color: #e33529;
+    font-size: 100px;
+    line-height: 1;
+    letter-spacing: -5px; /* 글자가 크므로 자간을 더 줄이면 멋집니다 */
+    text-transform: uppercase;
+    position: absolute;
+    margin-left: auto;  /* 폰트 자체의 미세한 여백까지 없애고 싶을 때 사용 */
+    z-index: 5; 
+    text-align: center;     
 	justify-content: center;
+    width: 100%;         /* 전체 너비를 차지하게 설정 */
+    transform: none;   
+	top: 200px;
+	display: block; /* flex 대신 block으로 변경해서 테스트해보세요 */
 	width: 100%;
-	max-width: 1200px;
-	margin: 0 auto;
-	position: relative;
+	margin: auto;
 }
 
 .container9 {
