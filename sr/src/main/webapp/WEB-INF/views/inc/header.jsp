@@ -66,7 +66,7 @@
 		<div class="nav2">
 			<div class="link5">
 				<img class="imges-h-04" src="${pageContext.request.contextPath}/resources/images/component-26.svg" />
-				<div class="book-now">등록하러 가기</div>
+				<div class="regist-now">등록하러 가기</div>
 				<img class="imges-h-05" src="${pageContext.request.contextPath}/resources/images/component-27.svg" />
 			</div>
 		</div>

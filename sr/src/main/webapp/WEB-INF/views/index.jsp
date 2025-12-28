@@ -19,15 +19,35 @@
     <!-- header  -->
 	<%@ include file="./inc/header.jsp" %>
 	
-  <div class="corisalrang_1227">
+	<div class="corisalrang_1227">
     <div class="_w-light">
       <div class="main">
+      		<div class="dog-container">
+				<img class="dog-part body" src="${pageContext.request.contextPath}/resources/images/dog-body.png" />
+		        <img class="dog-part fur1" src="${pageContext.request.contextPath}/resources/images/dog-fur1.png" />
+		        <img class="imges_ball2" src="${pageContext.request.contextPath}/resources/images/ball2.svg" />
+		        
+			</div>
+			<div class="A-TIRED">
+				A TIRED 
+				<br />
+				DOG IS
+			</div>
+			<div class="A-HAPPY">
+				A 
+				<br />
+				HAPPY
+				<br />
+				DOG!!
+			</div>
+			
+			
         <div class="container">
           <div class="container">
             <div class="section">
               <div class="container2">
                 <div class="component-2">
-                  <img class="clip-path-group" src="${pageContext.request.contextPath}/resources/images/clip-path-group0.svg" />
+					<img class="clip-path-group" src="${pageContext.request.contextPath}/resources/images/clip-path-group0.svg" />
                 </div>
               </div>
             </div>
@@ -42,6 +62,7 @@
                       <img class="our-dog" src="${pageContext.request.contextPath}/resources/images/our-dog0.png" />
                       <img class="our-dog2" src="${pageContext.request.contextPath}/resources/images/our-dog1.png" />
                       <img class="our-dog3" src="${pageContext.request.contextPath}/resources/images/our-dog2.png" />
+                      
                     </div>
                   </div>
                 </div>
@@ -56,8 +77,7 @@
                 <div class="margin">
                   <div class="container6">
                     <div
-                      class="just-fill-out-the-form-and-we-ll-be-happy-to-assist-you-with-your-pet"
-                    >
+                      class="just-fill-out-the-form-and-we-ll-be-happy-to-assist-you-with-your-pet">
                       Just fill out the form, and we'll be happy to assist
                       <br />
                       you with your pet.
@@ -304,9 +324,6 @@
           </div>
         </div>
       </div>
-    
-    
-
 	
     </div>
   </div>
