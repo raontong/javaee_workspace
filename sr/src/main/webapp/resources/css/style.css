@@ -335,19 +335,32 @@ body, html {
 }
 
 .imges_ball2 {
-	width: 200%;
-	height: 200%;
-	position: absolute;
-	align-items: center;
-    top: -6000px;
-    left: 0;
-    position: relative;
+    /* 1. 위치 방식: 부모인 ._w-light(relative)를 기준으로 배치 */
+    position: absolute; 
+    
+    /* 2. 중앙 정렬: 강아지 컨테이너와 동일하게 맞춤 */
+    left: 50%;
+    transform: translateX(-50%); 
+    
+    /* 3. 수직 위치: 강아지 몸체 하단(발바닥) 근처로 설정 */
+    /* top: -6000px 대신 bottom이나 구체적인 top 수치를 사용합니다 */
+    top: 1000px; /* 강아지 컨테이너 높이와 몸체 위치에 맞춰 숫자를 가감하세요 */
+    width: 90%; 
+    height: auto;
+    
+    /* 5. 레이어 순서: 강아지(10)보다 뒤에 두려면 9 이하, 앞에 두려면 12 이상 */
+    z-index: 9; 
+    
+    /* 6. 기타 설정 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* 1. 컨테이너: 전체 위치 고정 */
 .dog-container {
     position: absolute;
-    top: -200px;
+    top: -150px;
     left: 50%;
     transform: translateX(-50%);
     width: 2000px;
@@ -488,19 +501,25 @@ body, html {
 }
 
 .our-services {
-	color: var(--color-red-53, #e33529);
-	text-align: center;
-	font-family: var(--dontboardmecom-semantic-heading-2-upper-font-family,
-		"Bayon-Regular", sans-serif);
-	font-size: var(--dontboardmecom-semantic-heading-2-upper-font-size, 293px);
-	line-height: var(--dontboardmecom-semantic-heading-2-upper-line-height, 228.54px);
-	letter-spacing: var(--dontboardmecom-semantic-heading-2-upper-letter-spacing, -5.86px);
-	font-weight: var(--dontboardmecom-semantic-heading-2-upper-font-weight, 400);
-	text-transform: uppercase;
-	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+    font-family: 'Bayon-Regular', sans-serif;
+    color: #e33529;
+    font-size: 200px;
+    line-height: 1;
+    letter-spacing: -10px; /* 글자가 크므로 자간을 더 줄이면 멋집니다 */
+    text-transform: uppercase;
+
+    /* 위치 설정: 화면 왼쪽 끝에 밀착 */
+    position: absolute;
+    top: 80px;           
+    margin-left: -1px;  /* 폰트 자체의 미세한 여백까지 없애고 싶을 때 사용 */
+
+    /* 레이어 순서: 강아지(10)보다 낮게 설정하여 뒤로 보냄 */
+    z-index: 5; 
+    
+    /* 정렬 설정 */
+    text-align: center;     
+    width: 100%;         /* 전체 너비를 차지하게 설정 */
+    transform: none;   
 }
 
 .background {
@@ -795,24 +814,33 @@ body, html {
 	position: relative;
 }
 
-.heading-3-have-questions {
+.dream-team {
+	font-family: 'Bayon-Regular', sans-serif;
 	color: var(--color-azure-35, #2b6786);
 	text-align: center;
-	font-family: var(--dontboardmecom-semantic-heading-3-upper-font-family,
-		"Bayon-Regular", sans-serif);
-	font-size: var(--dontboardmecom-semantic-heading-3-upper-font-size, 236px);
-	line-height: var(--dontboardmecom-semantic-heading-3-upper-line-height, 184px);
-	letter-spacing: var(--dontboardmecom-semantic-heading-3-upper-letter-spacing, -4.72px);
-	font-weight: var(--dontboardmecom-semantic-heading-3-upper-font-weight, 400);
-	text-transform: uppercase;
-	position: absolute;
-	left: calc(50% - 465.11px);
-	top: -40.46px;
-	width: 934.96px;
-	height: 369px;
-	display: flex;
-	align-items: center;
+	
+    font-size: 100px;
+    line-height: 1;
+    letter-spacing: -5px; /* 글자가 크므로 자간을 더 줄이면 멋집니다 */
+    text-transform: uppercase;
+
+    /* 위치 설정: 화면 왼쪽 끝에 밀착 */
+    position: absolute;
+    top: 100px;           
+    margin-left: -1px;  /* 폰트 자체의 미세한 여백까지 없애고 싶을 때 사용 */
+
+    /* 레이어 순서: 강아지(10)보다 낮게 설정하여 뒤로 보냄 */
+    z-index: 5; 
+    
+    /* 정렬 설정 */
+    text-align: center;     
+    align-items: center;
+    width: 100%;         /* 전체 너비를 차지하게 설정 */
+    transform: none;   
 	justify-content: center;
+
+	top: -40.46px;
+	display: flex;
 }
 
 .container11 {

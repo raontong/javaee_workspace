@@ -53,7 +53,11 @@
             </div>
             <div class="section2">
               <div class="heading-2">
-                <div class="our-services">our services</div>
+                <div class="our-services">
+                	SALRANG'S PHOTO
+                	<br/>
+                	
+                </div>
               </div>
               <div class="background">
                 <div class="container">
@@ -113,10 +117,10 @@
           </div>
           <div class="section5">
             <div class="container10">
-              <div class="heading-3-have-questions">
-                Have
+              <div class="dream-team">
+                We are like a dream team.
                 <br />
-                questions?
+                우리조 자랑
               </div>
               <div class="container11">
                 <div class="contact-us-at-858-449-2691">
@@ -130,7 +134,7 @@
               <div class="container13">
                 <img class="component-22" src="${pageContext.request.contextPath}/resources/images/component-21.svg" />
                 <div class="heading-4-margin">
-                  <div class="heading-4-cost-of-walking">cost of walking</div>
+                  <div class="heading-4-cost-of-walking">멋진 우리 팀</div>
                 </div>
               </div>
               <div class="container14">
