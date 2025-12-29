@@ -1,8 +1,4 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
-<%@ page import="java.util.List" %>
-<%@ page import="com.ch.shop.dto.TopCategory" %>
-
-
     <header class="header">
         <div class="container-fluid">
             <div class="row">
@@ -15,7 +11,7 @@
                     <nav class="header__menu">
                         <ul>
                             <li class="active"><a href="./index.html">Home</a></li>
-                            <%for(TopCategory topCategory : topList){%>
+                            <%for(TopCategory topCategory  : topList){%>
                             	<li><a href="#"><%=topCategory.getTopname()%></a></li>
                             <%} %>
                             <li><a href="./shop.html">Shop</a></li>
@@ -35,8 +31,8 @@
                 <div class="col-lg-3">
                     <div class="header__right">
                         <div class="header__right__auth">
-                            <a href="#">Login</a>
-                            <a href="#">Register</a>
+                            <a href="/member/loginform">Login</a>
+                            <a href="/member/loginform">Register</a>
                         </div>
                         <ul class="header__right__widget">
                             <li><span class="icon_search search-switch"></span></li>

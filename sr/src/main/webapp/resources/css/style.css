@@ -393,7 +393,6 @@ body, html {
 
 /* --- 애니메이션 정의 --- */
 
-/* 몸체: 왼쪽(-4도)과 오른쪽(5도)을 왕복 */
 @keyframes bodyMove {
     0%, 20%, 100% { transform: rotate(-3deg); } /* 왼쪽 정지 */
     50%, 70% { transform: rotate(3deg); }      /* 오른쪽 정지 */
@@ -1772,6 +1771,11 @@ body, html {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+.text3 : hover{
+	color: var(--color-red-53, #e33529);
+	
 }
 
 .container35 {
