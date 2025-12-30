@@ -138,10 +138,20 @@ public class ProductServiceImpl implements ProductService{
 		fileManager.remove(dirName);
 	}
 
-
 	@Override
 	public List getList() {
 		return productDAO.selectAll();
+	}
+
+	@Override
+	public List selectBySubCategoryId(int subcategory_id) {
+		return productDAO.selectBySubCategoryId(subcategory_id);
+	}
+
+
+	@Override
+	public Product select(int product_id) {
+		return productDAO.select(product_id);
 	}
 	
 }

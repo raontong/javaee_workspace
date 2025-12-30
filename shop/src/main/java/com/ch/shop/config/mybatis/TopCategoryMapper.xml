@@ -2,10 +2,35 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="TopCategory">
 
+	<resultMap id="subCategoryMap" type="TopCategory">
+	<!-- 		아래의 sql topcategory_id 를            TopCategory.java에  -->
+        <id column="topcategory_id" property="topcategory_id"/>
+        <result column="topname" property="topname"/>
+		
+		<!-- 	
+			자식을 수집해서  subList 멥버변수에 채우기 
+			mybatis 에서는 부모가 다수의 자식을 수집하는 기능을 collection
+			외래키 topcategory_id를 이용 
+		-->
+		<collection 
+			column="topcategory_id" 
+            select="SubCategory.selectByTopCategoryId"
+            property="subList"
+            javaType="java.util.List"
+            ofType="SubCategory"
+			/>
+		
+	</resultMap>
+	
 	<!-- 쇼핑몰의 모든 상위 카테고리 가져오기  -->
-	<select id="selectAll" resultType="TopCategory">
+	<!--  
+			현재로써는, 아래의 쿼리에 의해 pk와 topname 만을 채울 수 있으므로 
+			하나의 상위 카테고리에 소속된 자식인 하위 카테고리 목록을 마이바티스가 자동으로 
+			매핑해주지 못하는 상황.. 이때는 ㅐ발자가 직접 원하는 매핑을 시도해야한다.
+			resultMap 이용 
+	-->
+	<select id="selectAll" resultMap="subCategoryMap">
 		select topcategory_id, topname from topcategory
 	</select>
-	
 	
 </mapper>

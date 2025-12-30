@@ -20,10 +20,10 @@
 			이 시점부터는 개발자가 나서서 수동으로 매핑을 시도할 수 있다..
 	 -->
 	<resultMap id="productMap" type="Product">
-		<id  column="product_id" 			property="product_id" />
+		<id  column="product_id" 				property="product_id" />
 		<result column="product_name" 	property="product_name"/>	
 		<result column="brand" 				property="brand"/>	
-		<result column="price" 				property="price"/>	
+		<result column="price" 					property="price"/>	
 		<result column="discount" 			property="discount"/>	
 		<result column="introduce" 			property="introduce"/>	
 		<result column="detail" 				property="detail"/>
@@ -36,24 +36,62 @@
 			select="SubCategory.select"/>
 	
 		<!-- 
-			collection 이란? 여러건의 자식 레코드를 가져올 수 있는 mybatis의 기능 		
+			collection 이란? 여러건의 자식 레코드를 가져올 수 있는 mybatis 의 기능 		
 		 -->
 		 <collection column="product_id" 
 			 	select="ProductImg.selectByProductId"
 			 	property="productImgList"
 			 	javaType="java.util.List"
-			 	ofType="ProductImg"
-		 	/>
+			 	ofType="ProductImg" />
+	
+		<!-- 상품에 소속된 색상 가져와서, colorList 속성에 채워넣기 -->
+		<collection 
+			column="product_id" 
+			select="Color.selectByProductId" 
+			property="colorList"
+			javaType="java.util.List"
+			ofType="Color" />
+			
+		<!-- 상품에 소속된 사이즈 가져와서, sizerList 속성에 채워넣기 -->
+		<collection 
+			column="product_id" 
+			select="Size.selectByProductId" 
+			property="sizeList"
+			javaType="java.util.List"
+			ofType="Size" />			
+			 	
 	</resultMap>
 	
-	<!-- 모든 상품 가져오기  -->
-	<select id="selectAll" resultMap="productMap">
+	<!-- 공통 쿼리를 정의 -->
+	<sql id="sql_select">
 		select product_id, product_name, brand, price, discount, 
 		introduce, detail, subcategory_id
-		from product		
+		from product
+	</sql>
+	
+	<!-- 모든 상품 가져오기 -->
+	<select id="selectAll" resultMap="productMap">
+		<include refid="sql_select"/>
 	</select>
+ 
+ 	<!-- 하위 카테고리에 소속된 상품만 가져오기 -->
+ 	<select id="selectBySubCategoryId" parameterType="int" resultMap="productMap">
+ 		<include refid="sql_select"/>
+ 		<!-- mybatis 의 where 태그를 사용하면 조건이 없을 경우 where 절이 동적으로 사라지고, 조건이 있으면 
+ 				where 문이  sql 에 포함된다-->
+ 		<where>
+ 			<if test="_parameter!=0">
+ 				subcategory_id=#{subcategory_id}
+ 			</if>
+ 		</where>
+		
+ 	</select>
 
-
+	<!-- 상품 1건 가져오기 											"수동매핑"		-->
+	<select id="select" parameterType="int" resultMap="productMap">
+		<include refid="sql_select"/> where product_id=#{product_id}
+	</select>
+	
 </mapper>
 
 

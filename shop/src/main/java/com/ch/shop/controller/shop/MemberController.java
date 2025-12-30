@@ -42,9 +42,6 @@ import lombok.extern.slf4j.Slf4j;
 public class MemberController {
 
 	@Autowired
-	private TopCategoryService topCategoryService;
-
-	@Autowired
 	private Map<String, OAuthClient> oauthClients;
 
 	@Autowired
@@ -60,9 +57,12 @@ public class MemberController {
 	@GetMapping("/member/loginform")
 	public String getLoginForm(Model model) {
 
-		List topList = topCategoryService.getList();// 3단계: 일 시키기
-		// 4단계: 결과 페이지로 가져갈 것이다...
-		model.addAttribute("topList", topList);
+		/*
+		 List topList = topCategoryService.getList();
+		 // 3단계: 일 시키기 
+		 // 4단계: 결과 페이지로 가져갈것이다... 
+		 model.addAttribute("topList", topList);
+		 */
 		return "shop/member/login";
 	}
 

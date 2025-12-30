@@ -7,4 +7,9 @@
 		select color_id, color_name from color
 	</select>
 	
+	<!-- 특정 상품에 소속된 색상만 가져오기 -->
+	<select id="selectByProductId" parameterType="int" resultType="Color">
+		select color_id, color_name from color 
+		where color_id in(select color_id from product_color where product_id=#{product_id})
+	</select>
 </mapper>

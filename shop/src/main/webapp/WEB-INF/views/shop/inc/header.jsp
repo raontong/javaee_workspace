@@ -1,11 +1,16 @@
 <%@page import="com.ch.shop.dto.Member"%>
+<%@page import="com.ch.shop.dto.TopCategory"%>
+<%@ page import="java.util.List" %>
+<%
+	List<TopCategory> topList = (List)request.getAttribute("topList");
+%>
 <%@ page contentType="text/html; charset=UTF-8"%>
     <header class="header">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-3 col-lg-2">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="/static/template/img/logo.png" alt=""></a>
+                        <a href="/"><img src="/static/template/img/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-7">
@@ -15,7 +20,7 @@
                             <%for(TopCategory topCategory : topList){%>
                             	<li><a href="#"><%=topCategory.getTopname()%></a></li>
                             <%} %>
-                            <li><a href="./shop.html">Shop</a></li>
+                            <li><a href="/product/list">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
                                     <li><a href="./product-details.html">Product Details</a></li>
