@@ -19,7 +19,7 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 public class MailSender {
 	String host = "smtp.gmail.com";
-	String user = "devlearncampus@gmail.com"; //보내는 자 
+	String user = "raontong@gmail.com"; // 웹마스터 주소
 	String password;
 	Properties props = new Properties();
 	

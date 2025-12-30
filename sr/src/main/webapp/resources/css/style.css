@@ -1,8 +1,18 @@
+/* 영문 폰트 Bayon */
 @font-face {
-    font-family: 'Bayon-Regular';
-    src: url('../fonts/bayon-latin-400-normal.woff2') format('woff2'),
-         url('../fonts/bayon-latin-400-normal.woff') format('woff'),
-         url('../fonts/bayon-latin-400-normal.ttf') format('truetype');
+    font-family: 'Bayon';
+    src:	url('../fonts/bayon-latin-400-normal.woff2') format('woff2'),
+         	url('../fonts/bayon-latin-400-normal.woff') format('woff'),
+        	url('../fonts/bayon-latin-400-normal.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap; /* 폰트 로딩 중에도 글자가 보이게 설정 */
+}
+
+/* 영문 폰트 inter */
+@font-face {
+    font-family: 'inter';
+    src:	url('../fonts/bayon-latin-400-normal.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
     font-display: swap; /* 폰트 로딩 중에도 글자가 보이게 설정 */
@@ -19,7 +29,7 @@
 
 /* 한글 폰트 - Medium (500) */
 @font-face {
-    font-family: 'KoPubBatang';
+    font-family: 'KoPubDotum';
     src: url('../fonts/KoPubDotumMedium.ttf') format('truetype'); /* 확장자 .ttf 확인 필수 */
     font-weight: 500;
     font-style: normal;
@@ -28,7 +38,7 @@
 
 /* 한글 폰트 - Light (300) */
 @font-face {
-    font-family: 'KoPubBatang';
+    font-family: 'KoPubDotum';
     src: url('../fonts/KoPubDotumLight.ttf') format('truetype');
     font-weight: 300;
     font-style: normal;
@@ -39,11 +49,12 @@
   * {
 	box-sizing: border-box;
 }
+
 * {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
-	-webkit-font-smoothing: antialiased;
+	-webkit-smoothing: antialiased;
 }
 
 body, html {
@@ -163,7 +174,18 @@ body, html {
 	position: relative;
 }
 
+/* 1. 평소 상태 (배경 투명, 글자 검정) */
 .component-102 {
+    padding: 8px 20px;	/* 위아래, 좌우 여백으로 버튼 크기 조절 */
+    border-radius: 50px;	/* 알약처럼 둥글게 만드는 핵심! */
+    transition: all 0.3s;    	/* 배경색과 글자색이 부드럽게 변하도록 설정 */
+    display: inline-flex;    	/* 내용물에 딱 맞게 크기 조절 */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* .component-102 {
 	padding: 4px 8px 4px 8px;
 	display: flex;
 	flex-direction: row;
@@ -172,6 +194,28 @@ body, html {
 	justify-content: flex-start;
 	flex-shrink: 0;
 	position: relative;
+} */
+
+.text3 {
+	white-space: nowrap; /* 글자가 절대 꺾이지 않도록 설정 */
+	color: var(--color-red-53, #e33529);
+	text-align: center;
+    font-family: 'KoPubBatang';
+    font-weight: 500;
+	font-size: 18px;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* 2. 마우스를 올렸을 때 (배경 빨강, 글자 하양) */
+.component-102:hover {
+    background-color: var(--color-red-53, #e33529); 
+}
+
+.component-102:hover .text3 {
+    color: #ffffff;          /* 글자색을 하얀색으로! */
 }
 
 .link-margin3 {
@@ -286,7 +330,7 @@ body, html {
 
 .A-TIRED {
     /* 폰트 설정 */
-    font-family: 'Bayon-Regular', sans-serif;
+    font-family: 'Bayon', sans-serif;
     color: #e33529;
     font-size: 300px;
     line-height: 0.8;
@@ -311,7 +355,7 @@ body, html {
 
 .A-HAPPY {
     /* 폰트 설정 */
-    font-family: 'Bayon-Regular', sans-serif;
+    font-family: 'Bayon', sans-serif;
     color: #e33529;
     font-size: 300px;
     line-height: 0.8;
@@ -487,7 +531,7 @@ body, html {
 	position: relative;
 }
 
-.heading-2 {
+.Bayon {
 	display: flex;
 	flex-direction: column;
 	gap: 0px;
@@ -500,7 +544,7 @@ body, html {
 }
 
 .our-services {
-    font-family: 'Bayon-Regular', sans-serif;
+    font-family: 'Bayon', sans-serif;
     color: #e33529;
     font-size: 200px;
     line-height: 1;
@@ -636,12 +680,12 @@ body, html {
 .how-it-works {
 	color: var(--color-red-53, #e33529);
 	text-align: center;
-	font-family: var(--dontboardmecom-bayon-regular-upper-font-family,
-		"Bayon-Regular", sans-serif);
-	font-size: var(--dontboardmecom-bayon-regular-upper-font-size, 96px);
-	line-height: var(--dontboardmecom-bayon-regular-upper-line-height, 74.88px);
-	letter-spacing: var(--dontboardmecom-bayon-regular-upper-letter-spacing, -1.92px);
-	font-weight: var(--dontboardmecom-bayon-regular-upper-font-weight, 400);
+	font-family: var(--Bayon-family,
+		"Bayon", sans-serif);
+	font-size: var(--Bayon-size, 96px);
+	line-height: var(--Bayon-height, 74.88px);
+	letter-spacing: var(--Bayon-letter-spacing, -1.92px);
+	font-weight: var(--Bayon-weight, 400);
 	text-transform: uppercase;
 	position: relative;
 	display: flex;
@@ -675,12 +719,12 @@ body, html {
 .just-fill-out-the-form-and-we-ll-be-happy-to-assist-you-with-your-pet {
 	color: var(--color-red-53, #e33529);
 	text-align: center;
-	font-family: var(--dontboardmecom-bayon-regular-upper-font-family,
-		"Bayon-Regular", sans-serif);
-	font-size: var(--dontboardmecom-bayon-regular-upper-font-size, 16px);
-	line-height: var(--dontboardmecom-bayon-regular-upper-line-height, 16px);
-	letter-spacing: var(--dontboardmecom-bayon-regular-upper-letter-spacing, -0.32px);
-	font-weight: var(--dontboardmecom-bayon-regular-upper-font-weight, 400);
+	font-family: var(--Bayon-family,
+		"Bayon", sans-serif);
+	font-size: var(--Bayon-size, 16px);
+	line-height: var(--Bayon-height, 16px);
+	letter-spacing: var(--Bayon-letter-spacing, -0.32px);
+	font-weight: var(--Bayon-weight, 400);
 	text-transform: uppercase;
 	position: relative;
 	display: flex;
@@ -728,7 +772,7 @@ body, html {
 }
 
 .the-personalized-in-home-care-your-pet-deserves {
-    font-family: 'Bayon-Regular', sans-serif;
+    font-family: 'Bayon', sans-serif;
     color: #e33529;
     font-size: 35px;
     line-height: 1;
@@ -742,7 +786,7 @@ body, html {
     transform: none;   
 }
 
-.heading-2-margin {
+.Bayon-margin {
 	padding: 94.04px 0px 0px 0px;
 	display: flex;
 	flex-direction: column;
@@ -754,7 +798,7 @@ body, html {
 	position: relative;
 }
 
-.heading-22 {
+.Bayon2 {
 	display: flex;
 	flex-direction: column;
 	gap: 0px;
@@ -766,7 +810,7 @@ body, html {
 }
 
 .the-care-your-pet-deserves {
-	font-family: 'Bayon-Regular', sans-serif;
+	font-family: 'Bayon', sans-serif;
     color: #e33529;
     font-size: 100px;
     line-height: 1;
@@ -813,7 +857,7 @@ body, html {
 }
 
 .dream-team {
-	font-family: 'Bayon-Regular', sans-serif;
+	font-family: 'Bayon', sans-serif;
 	color: var(--color-azure-35, #2b6786);
 	text-align: center;
 	
@@ -856,12 +900,12 @@ body, html {
 .contact-us-at-858-449-2691 {
 	color: var(--color-azure-35, #2b6786);
 	text-align: center;
-	font-family: var(--dontboardmecom-bayon-regular-upper-font-family,
-		"Bayon-Regular", sans-serif);
-	font-size: var(--dontboardmecom-bayon-regular-upper-font-size, 70px);
-	line-height: var(--dontboardmecom-bayon-regular-upper-line-height, 54.6px);
-	letter-spacing: var(--dontboardmecom-bayon-regular-upper-letter-spacing, -1.4px);
-	font-weight: var(--dontboardmecom-bayon-regular-upper-font-weight, 400);
+	font-family: var(--Bayon-family,
+		"Bayon", sans-serif);
+	font-size: var(--Bayon-size, 70px);
+	line-height: var(--Bayon-height, 54.6px);
+	letter-spacing: var(--Bayon-letter-spacing, -1.4px);
+	font-weight: var(--Bayon-weight, 400);
 	text-transform: uppercase;
 	position: relative;
 	display: flex;
@@ -914,7 +958,7 @@ body, html {
 	overflow: visible;
 }
 
-.heading-4-margin {
+.Bayon-margin {
 	padding: 32px 0px 0px 0px;
 	display: flex;
 	flex-direction: column;
@@ -925,15 +969,15 @@ body, html {
 	position: relative;
 }
 
-.heading-4-cost-of-walking {
+.Bayon-cost-of-walking {
 	color: var(--color-azure-35, #2b6786);
 	text-align: left;
-	font-family: var(--dontboardmecom-semantic-heading-4-upper-font-family,
-		"Bayon-Regular", sans-serif);
-	font-size: var(--dontboardmecom-semantic-heading-4-upper-font-size, 96px);
-	line-height: var(--dontboardmecom-semantic-heading-4-upper-line-height, 74.88px);
-	letter-spacing: var(--dontboardmecom-semantic-heading-4-upper-letter-spacing, -1.92px);
-	font-weight: var(--dontboardmecom-semantic-heading-4-upper-font-weight, 400);
+	font-family: var(--Bayon-family,
+		"Bayon", sans-serif);
+	font-size: var(--Bayon-size, 96px);
+	line-height: var(--Bayon-height, 74.88px);
+	letter-spacing: var(--Bayon-letter-spacing, -1.92px);
+	font-weight: var(--Bayon-weight, 400);
 	text-transform: uppercase;
 	position: relative;
 	display: flex;
@@ -992,12 +1036,12 @@ body, html {
 .singular-walks-30-min {
 	color: var(--color-azure-35, #2b6786);
 	text-align: center;
-	font-family: var(--dontboardmecom-bayon-regular-upper-font-family,
-		"Bayon-Regular", sans-serif);
-	font-size: var(--dontboardmecom-bayon-regular-upper-font-size, 30px);
-	line-height: var(--dontboardmecom-bayon-regular-upper-line-height, 30px);
-	letter-spacing: var(--dontboardmecom-bayon-regular-upper-letter-spacing, -0.6px);
-	font-weight: var(--dontboardmecom-bayon-regular-upper-font-weight, 400);
+	font-family: var(--Bayon-family,
+		"Bayon", sans-serif);
+	font-size: var(--Bayon-size, 30px);
+	line-height: var(--Bayon-height, 30px);
+	letter-spacing: var(--Bayon-letter-spacing, -0.6px);
+	font-weight: var(--Bayon-weight, 400);
 	text-transform: uppercase;
 	position: relative;
 	display: flex;
@@ -1018,11 +1062,11 @@ body, html {
 .from {
 	color: var(--color-azure-35, #2b6786);
 	text-align: left;
-	font-family: var(--dontboardmecom-inter-medium-upper-font-family,
-		"Inter-Medium", sans-serif);
-	font-size: var(--dontboardmecom-inter-medium-upper-font-size, 13.699999809265137px);
-	line-height: var(--dontboardmecom-inter-medium-upper-line-height, 14px);
-	font-weight: var(--dontboardmecom-inter-medium-upper-font-weight, 500);
+	font-family: var(--Inter-family,
+		"Inter", sans-serif);
+	font-size: var(--Inter-size, 13.699999809265137px);
+	line-height: var(--Inter-height, 14px);
+	font-weight: var(--Inter-weight, 500);
 	text-transform: uppercase;
 	position: relative;
 	display: flex;
@@ -1044,12 +1088,12 @@ body, html {
 ._30 {
 	color: var(--color-azure-35, #2b6786);
 	text-align: left;
-	font-family: var(--dontboardmecom-bayon-regular-upper-font-family,
-		"Bayon-Regular", sans-serif);
-	font-size: var(--dontboardmecom-bayon-regular-upper-font-size, 96px);
-	line-height: var(--dontboardmecom-bayon-regular-upper-line-height, 74.88px);
-	letter-spacing: var(--dontboardmecom-bayon-regular-upper-letter-spacing, -1.92px);
-	font-weight: var(--dontboardmecom-bayon-regular-upper-font-weight, 400);
+	font-family: var(--Bayon-family,
+		"Bayon", sans-serif);
+	font-size: var(--Bayon-size, 96px);
+	line-height: var(--Bayon-height, 74.88px);
+	letter-spacing: var(--Bayon-letter-spacing, -1.92px);
+	font-weight: var(--Bayon-weight, 400);
 	text-transform: uppercase;
 	position: relative;
 	display: flex;
@@ -1073,11 +1117,11 @@ body, html {
 .to-just-test-the-service {
 	color: var(--color-azure-35, #2b6786);
 	text-align: center;
-	font-family: var(--dontboardmecom-inter-medium-upper-font-family,
-		"Inter-Medium", sans-serif);
-	font-size: var(--dontboardmecom-inter-medium-upper-font-size, 13.199999809265137px);
-	line-height: var(--dontboardmecom-inter-medium-upper-line-height, 14px);
-	font-weight: var(--dontboardmecom-inter-medium-upper-font-weight, 500);
+	font-family: var(--Inter-family,
+		"Inter", sans-serif);
+	font-size: var(--Inter-size, 13.199999809265137px);
+	line-height: var(--Inter-height, 14px);
+	font-weight: var(--Inter-weight, 500);
 	text-transform: uppercase;
 	position: relative;
 	display: flex;
@@ -1163,12 +1207,12 @@ body, html {
 .text {
 	color: var(--color-grey-95, #f3f0ef);
 	text-align: right;
-	font-family: var(--dontboardmecom-bayon-regular-upper-font-family,
-		"Bayon-Regular", sans-serif);
-	font-size: var(--dontboardmecom-bayon-regular-upper-font-size, 30px);
-	line-height: var(--dontboardmecom-bayon-regular-upper-line-height, 30px);
-	letter-spacing: var(--dontboardmecom-bayon-regular-upper-letter-spacing, -0.6px);
-	font-weight: var(--dontboardmecom-bayon-regular-upper-font-weight, 400);
+	font-family: var(--Bayon-family,
+		"Bayon", sans-serif);
+	font-size: var(--Bayon-size, 30px);
+	line-height: var(--Bayon-height, 30px);
+	letter-spacing: var(--Bayon-letter-spacing, -0.6px);
+	font-weight: var(--Bayon-weight, 400);
 	text-transform: uppercase;
 	position: relative;
 	display: flex;
@@ -1191,12 +1235,12 @@ body, html {
 .twice-a-week {
 	color: var(--color-azure-35, #2b6786);
 	text-align: center;
-	font-family: var(--dontboardmecom-bayon-regular-upper-font-family,
-		"Bayon-Regular", sans-serif);
-	font-size: var(--dontboardmecom-bayon-regular-upper-font-size, 30px);
-	line-height: var(--dontboardmecom-bayon-regular-upper-line-height, 30px);
-	letter-spacing: var(--dontboardmecom-bayon-regular-upper-letter-spacing, -0.6px);
-	font-weight: var(--dontboardmecom-bayon-regular-upper-font-weight, 400);
+	font-family: var(--Bayon-family,
+		"Bayon", sans-serif);
+	font-size: var(--Bayon-size, 30px);
+	line-height: var(--Bayon-height, 30px);
+	letter-spacing: var(--Bayon-letter-spacing, -0.6px);
+	font-weight: var(--Bayon-weight, 400);
 	text-transform: uppercase;
 	position: relative;
 	display: flex;
@@ -1207,12 +1251,12 @@ body, html {
 ._224-mo {
 	color: var(--color-azure-35, #2b6786);
 	text-align: left;
-	font-family: var(--dontboardmecom-bayon-regular-upper-font-family,
-		"Bayon-Regular", sans-serif);
-	font-size: var(--dontboardmecom-bayon-regular-upper-font-size, 96px);
-	line-height: var(--dontboardmecom-bayon-regular-upper-line-height, 74.88px);
-	letter-spacing: var(--dontboardmecom-bayon-regular-upper-letter-spacing, -1.92px);
-	font-weight: var(--dontboardmecom-bayon-regular-upper-font-weight, 400);
+	font-family: var(--Bayon-family,
+		"Bayon", sans-serif);
+	font-size: var(--Bayon-size, 96px);
+	line-height: var(--Bayon-height, 74.88px);
+	letter-spacing: var(--Bayon-letter-spacing, -1.92px);
+	font-weight: var(--Bayon-weight, 400);
 	text-transform: uppercase;
 	position: relative;
 	display: flex;
@@ -1235,11 +1279,11 @@ body, html {
 .breaks-down-to-28-per-walk {
 	color: var(--color-azure-35, #2b6786);
 	text-align: center;
-	font-family: var(--dontboardmecom-inter-medium-upper-font-family,
-		"Inter-Medium", sans-serif);
-	font-size: var(--dontboardmecom-inter-medium-upper-font-size, 13.199999809265137px);
-	line-height: var(--dontboardmecom-inter-medium-upper-line-height, 14px);
-	font-weight: var(--dontboardmecom-inter-medium-upper-font-weight, 500);
+	font-family: var(--Inter-family,
+		"Inter", sans-serif);
+	font-size: var(--Inter-size, 13.199999809265137px);
+	line-height: var(--Inter-height, 14px);
+	font-weight: var(--Inter-weight, 500);
 	text-transform: uppercase;
 	position: relative;
 	display: flex;
@@ -1250,12 +1294,12 @@ body, html {
 .three-times-a-week {
 	color: var(--color-azure-35, #2b6786);
 	text-align: center;
-	font-family: var(--dontboardmecom-bayon-regular-upper-font-family,
-		"Bayon-Regular", sans-serif);
-	font-size: var(--dontboardmecom-bayon-regular-upper-font-size, 30px);
-	line-height: var(--dontboardmecom-bayon-regular-upper-line-height, 30px);
-	letter-spacing: var(--dontboardmecom-bayon-regular-upper-letter-spacing, -0.6px);
-	font-weight: var(--dontboardmecom-bayon-regular-upper-font-weight, 400);
+	font-family: var(--Bayon-family,
+		"Bayon", sans-serif);
+	font-size: var(--Bayon-size, 30px);
+	line-height: var(--Bayon-height, 30px);
+	letter-spacing: var(--Bayon-letter-spacing, -0.6px);
+	font-weight: var(--Bayon-weight, 400);
 	text-transform: uppercase;
 	position: relative;
 	display: flex;
@@ -1266,12 +1310,12 @@ body, html {
 ._312-mo {
 	color: var(--color-azure-35, #2b6786);
 	text-align: left;
-	font-family: var(--dontboardmecom-bayon-regular-upper-font-family,
-		"Bayon-Regular", sans-serif);
-	font-size: var(--dontboardmecom-bayon-regular-upper-font-size, 96px);
-	line-height: var(--dontboardmecom-bayon-regular-upper-line-height, 74.88px);
-	letter-spacing: var(--dontboardmecom-bayon-regular-upper-letter-spacing, -1.92px);
-	font-weight: var(--dontboardmecom-bayon-regular-upper-font-weight, 400);
+	font-family: var(--Bayon-family,
+		"Bayon", sans-serif);
+	font-size: var(--Bayon-size, 96px);
+	line-height: var(--Bayon-height, 74.88px);
+	letter-spacing: var(--Bayon-letter-spacing, -1.92px);
+	font-weight: var(--Bayon-weight, 400);
 	text-transform: uppercase;
 	position: relative;
 	display: flex;
@@ -1282,11 +1326,11 @@ body, html {
 .breaks-down-to-26-per-walk {
 	color: var(--color-azure-35, #2b6786);
 	text-align: center;
-	font-family: var(--dontboardmecom-inter-medium-upper-font-family,
-		"Inter-Medium", sans-serif);
-	font-size: var(--dontboardmecom-inter-medium-upper-font-size, 13.199999809265137px);
-	line-height: var(--dontboardmecom-inter-medium-upper-line-height, 14px);
-	font-weight: var(--dontboardmecom-inter-medium-upper-font-weight, 500);
+	font-family: var(--Inter-family,
+		"Inter", sans-serif);
+	font-size: var(--Inter-size, 13.199999809265137px);
+	line-height: var(--Inter-height, 14px);
+	font-weight: var(--Inter-weight, 500);
 	text-transform: uppercase;
 	position: relative;
 	display: flex;
@@ -1312,11 +1356,11 @@ body, html {
 .most-popular {
 	color: var(--color-grey-95, #f3f0ef);
 	text-align: left;
-	font-family: var(--dontboardmecom-inter-medium-upper-font-family,
-		"Inter-Medium", sans-serif);
-	font-size: var(--dontboardmecom-inter-medium-upper-font-size, 11.399999618530273px);
-	line-height: var(--dontboardmecom-inter-medium-upper-line-height, 12px);
-	font-weight: var(--dontboardmecom-inter-medium-upper-font-weight, 500);
+	font-family: var(--Inter-family,
+		"Inter", sans-serif);
+	font-size: var(--Inter-size, 11.399999618530273px);
+	line-height: var(--Inter-height, 12px);
+	font-weight: var(--Inter-weight, 500);
 	text-transform: uppercase;
 	position: relative;
 	display: flex;
@@ -1341,12 +1385,12 @@ body, html {
 .text2 {
 	color: var(--color-grey-95, #f3f0ef);
 	text-align: center;
-	font-family: var(--dontboardmecom-bayon-regular-upper-font-family,
-		"Bayon-Regular", sans-serif);
-	font-size: var(--dontboardmecom-bayon-regular-upper-font-size, 30px);
-	line-height: var(--dontboardmecom-bayon-regular-upper-line-height, 30px);
-	letter-spacing: var(--dontboardmecom-bayon-regular-upper-letter-spacing, -0.6px);
-	font-weight: var(--dontboardmecom-bayon-regular-upper-font-weight, 400);
+	font-family: var(--Bayon-family,
+		"Bayon", sans-serif);
+	font-size: var(--Bayon-size, 30px);
+	line-height: var(--Bayon-height, 30px);
+	letter-spacing: var(--Bayon-letter-spacing, -0.6px);
+	font-weight: var(--Bayon-weight, 400);
 	text-transform: uppercase;
 	position: relative;
 	display: flex;
@@ -1676,11 +1720,11 @@ body, html {
 .san-diego-carlsbad-ca-metropolitan-area {
 	color: var(--color-red-53, #e33529);
 	text-align: left;
-	font-family: var(--dontboardmecom-inter-medium-upper-font-family,
-		"Inter-Medium", sans-serif);
-	font-size: var(--dontboardmecom-inter-medium-upper-font-size, 13.199999809265137px);
-	line-height: var(--dontboardmecom-inter-medium-upper-line-height, 14px);
-	font-weight: var(--dontboardmecom-inter-medium-upper-font-weight, 500);
+	font-family: var(--Inter-family,
+		"Inter", sans-serif);
+	font-size: var(--Inter-size, 13.199999809265137px);
+	line-height: var(--Inter-height, 14px);
+	font-weight: var(--Inter-weight, 500);
 	text-transform: uppercase;
 	position: relative;
 	align-self: stretch;
@@ -1703,12 +1747,12 @@ body, html {
 .ayvamail-gmail-com {
 	color: var(--color-red-53, #e33529);
 	text-align: left;
-	font-family: var(--dontboardmecom-semantic-link-upper-font-family,
-		"Inter-Medium", sans-serif);
-	font-size: var(--dontboardmecom-semantic-link-upper-font-size, 13.100000381469727px
+	font-family: var(--link-family,
+		"Inter", sans-serif);
+	font-size: var(--link-size, 13.100000381469727px
 		);
-	line-height: var(--dontboardmecom-semantic-link-upper-line-height, 14px);
-	font-weight: var(--dontboardmecom-semantic-link-upper-font-weight, 500);
+	line-height: var(--link-height, 14px);
+	font-weight: var(--link-weight, 500);
 	text-transform: uppercase;
 	position: relative;
 	display: flex;
@@ -1760,23 +1804,7 @@ body, html {
 	position: relative;
 }
 
-.text3 {
-	white-space: nowrap; /* 글자가 절대 꺾이지 않도록 설정 */
-	color: var(--color-red-53, #e33529);
-	text-align: center;
-    font-family: 'KoPubBatang';
-    font-weight: 700;
-	font-size: 18px;
-	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
 
-.text3 : hover{
-	color: var(--color-red-53, #e33529);
-	
-}
 
 .container35 {
 	display: flex;
@@ -1805,11 +1833,11 @@ body, html {
 ._2025-don-t-board-me-all-rights-reserved {
 	color: var(--color-red-53, #e33529);
 	text-align: center;
-	font-family: var(--dontboardmecom-inter-medium-upper-font-family,
-		"Inter-Medium", sans-serif);
-	font-size: var(--dontboardmecom-inter-medium-upper-font-size, 13.199999809265137px);
-	line-height: var(--dontboardmecom-inter-medium-upper-line-height, 14px);
-	font-weight: var(--dontboardmecom-inter-medium-upper-font-weight, 500);
+	font-family: var(--Inter-family,
+		"Inter", sans-serif);
+	font-size: var(--Inter-size, 13.199999809265137px);
+	line-height: var(--Inter-height, 14px);
+	font-weight: var(--Inter-weight, 500);
 	text-transform: uppercase;
 	position: relative;
 	display: flex;
@@ -1832,12 +1860,12 @@ body, html {
 .made-by {
 	color: var(--color-red-53, #e33529);
 	text-align: center;
-	font-family: var(--dontboardmecom-semantic-link-upper-font-family,
-		"Inter-Medium", sans-serif);
-	font-size: var(--dontboardmecom-semantic-link-upper-font-size, 13.100000381469727px
+	font-family: var(--link-family,
+		"Inter", sans-serif);
+	font-size: var(--link-size, 13.100000381469727px
 		);
-	line-height: var(--dontboardmecom-semantic-link-upper-line-height, 14px);
-	font-weight: var(--dontboardmecom-semantic-link-upper-font-weight, 500);
+	line-height: var(--link-height, 14px);
+	font-weight: var(--link-weight, 500);
 	text-transform: uppercase;
 	position: relative;
 	display: flex;
@@ -1858,12 +1886,12 @@ body, html {
 .the-first-the-last {
 	color: var(--color-red-53, #e33529);
 	text-align: center;
-	font-family: var(--dontboardmecom-semantic-link-upper-font-family,
-		"Inter-Medium", sans-serif);
-	font-size: var(--dontboardmecom-semantic-link-upper-font-size, 13.100000381469727px
+	font-family: var(--link-family,
+		"Inter", sans-serif);
+	font-size: var(--link-size, 13.100000381469727px
 		);
-	line-height: var(--dontboardmecom-semantic-link-upper-line-height, 14px);
-	font-weight: var(--dontboardmecom-semantic-link-upper-font-weight, 500);
+	line-height: var(--link-height, 14px);
+	font-weight: var(--link-weight, 500);
 	text-transform: uppercase;
 	position: relative;
 	display: flex;

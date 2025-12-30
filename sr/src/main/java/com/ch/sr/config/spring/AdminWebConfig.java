@@ -25,7 +25,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.ch.sr")
+@ComponentScan(basePackages = "com.ch.sr.controller.admin")
 public class AdminWebConfig implements WebMvcConfigurer {
 
 	@Override

@@ -30,13 +30,11 @@ import com.ch.shop.dto.OAuthClient;
 //MVC에서의 특정 분류가 딱히 없음에도 자동으로 올리고 싶다면 @Component
 @ComponentScan(basePackages = {"com.ch.shop.controller.shop"})
 public class ShopWebConfig extends WebMvcConfigurerAdapter{
-	 
 
 	@Bean
 	public RestTemplate restTemplate() {
 		return new RestTemplate();
 	}
-	
 	
 	/*--------------------------------------------------
 	Google 
@@ -63,7 +61,19 @@ public class ShopWebConfig extends WebMvcConfigurerAdapter{
 	public String naverClientSecret(JndiTemplate jndiTemplate) throws Exception{
 		return (String)jndiTemplate.lookup("java:comp/env/naver/client/secret"); 
 	}
+	
+	/*--------------------------------------------------
+	Kakao 
+	--------------------------------------------------*/
+	@Bean
+	public String kakaoClientId(JndiTemplate jndiTemplate) throws Exception {
+	    return (String)jndiTemplate.lookup("java:comp/env/kakao/client/id"); 
+	}
 
+	@Bean
+	public String kakaoClientSecret(JndiTemplate jndiTemplate) throws Exception {
+	    return (String)jndiTemplate.lookup("java:comp/env/kakao/client/secret"); 
+	}
 
 	/*
 	 * Oauth 로그인 시 사용되는 환경 변수(요청주소, 콜백주소..등등)는 객체로 담아서 관리하면 유지하기 좋다
@@ -74,7 +84,9 @@ public class ShopWebConfig extends WebMvcConfigurerAdapter{
 			@Qualifier("googleClientId") String googleClientId, 
 			@Qualifier("googleClientSecret") String googleClientSecret,
 			@Qualifier("naverClientId") String naverClientId, 
-			@Qualifier("naverClientSecret") String naverClientSecret			
+			@Qualifier("naverClientSecret") String naverClientSecret,
+			@Qualifier("kakaoClientId") String kakaoClientId, 
+	        @Qualifier("kakaoClientSecret") String kakaoClientSecret 
 			){
 		
 		//구글, 네이버, 카카오를 각각 OAuthClient 인스턴스 담은 후, 다시 Map에 모아두자  
@@ -105,10 +117,19 @@ public class ShopWebConfig extends WebMvcConfigurerAdapter{
 		naver.setRedirectUri("http://localhost:8888/login/callback/naver");
 		
 		map.put("naver", naver);
-
 		
-		
-		//카카오 등록 
+		//카카오 등록
+		OAuthClient kakao = new OAuthClient();
+	    kakao.setProvider("kakao");
+	    kakao.setClientId(kakaoClientId);
+	    kakao.setClientSecret(kakaoClientSecret);
+	    kakao.setAuthorizeUrl("https://kauth.kakao.com/oauth/authorize"); 
+	    kakao.setTokenUrl("https://kauth.kakao.com/oauth/token");
+	    kakao.setUserInfoUrl("https://kapi.kakao.com/v2/user/me");
+	    kakao.setScope("profile_nickname"); // 카카오 내 설정에 맞게 조정
+	    kakao.setRedirectUri("http://localhost:8888/login/callback/kakao");
+	    
+	    map.put("kakao", kakao); // 이제 MemberController에서 "kakao"로 꺼냄
 		
 		return map;
 	}

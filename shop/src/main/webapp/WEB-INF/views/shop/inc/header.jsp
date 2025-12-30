@@ -1,3 +1,4 @@
+<%@page import="com.ch.shop.dto.Member"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
     <header class="header">
         <div class="container-fluid">
@@ -11,7 +12,7 @@
                     <nav class="header__menu">
                         <ul>
                             <li class="active"><a href="./index.html">Home</a></li>
-                            <%for(TopCategory topCategory  : topList){%>
+                            <%for(TopCategory topCategory : topList){%>
                             	<li><a href="#"><%=topCategory.getTopname()%></a></li>
                             <%} %>
                             <li><a href="./shop.html">Shop</a></li>
@@ -31,8 +32,14 @@
                 <div class="col-lg-3">
                     <div class="header__right">
                         <div class="header__right__auth">
+                        <%if(session.getAttribute("member")==null){ %>
                             <a href="/member/loginform">Login</a>
                             <a href="/member/loginform">Register</a>
+                           <%} else{ %>
+                           <a href="/member/loginform">MyPage</a>
+                           <%Member member = (Member)session.getAttribute("member"); %>
+                           <a href="#"><%=member.getName() %></a>
+                           <%} %>
                         </div>
                         <ul class="header__right__widget">
                             <li><span class="icon_search search-switch"></span></li>

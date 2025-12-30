@@ -19,7 +19,7 @@
 				<div class="link4">
 					<div class="component-102">
 						<div class="container13">
-							<div class="text3">펫이이야기</div>
+							<div class="text3">펫이야기</div>
 						</div>
 					</div>
 				</div>
