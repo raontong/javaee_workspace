@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
 </head>
 
-
 <body>
     <!-- header  -->
 	<%@ include file="./inc/header.jsp" %>

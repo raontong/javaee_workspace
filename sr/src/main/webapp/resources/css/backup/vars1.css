@@ -1,0 +1,187 @@
+:root, [data-mode="mode-1"] {
+	--color-red-53: #e33529;
+	--color-red-83: #f0b5be;
+	--color-red-86: #f3c3cb;
+	--color-red-88: #f4ced3; 
+	--color-red-89 : #f6d2d8;
+	--color-black-solid: #000000;
+	--color-white-0: rgba(255, 255, 255, 0);
+	--color-white-solid: #ffffff;
+	--color-grey-11: #1d1d1d;
+	--color-grey-91: #ede2e2;
+	--color-grey-93: #f3f3e9;
+	--color-grey-95: #f3f0ef;
+	--color-grey-98: #fcfcf7;
+	--color-yellow-44: #a7a238;
+	--color-yellow-50: #fff500;
+	--color-azure-35: #2b6786;
+	--color-azure-52: #5b93b0;
+	--color-azure-84: #afd8fb;
+	--color-orange-24: #693413;
+	--color-orange-36: #925026;
+}
+
+:root {
+	--color-red-53: #e33529;
+	--color-red-83: #f0b5be;
+	--color-red-86: #f3c3cb;
+	--color-red-88: #f4ced3; 
+	--color-red-89 : #f6d2d8;
+	--color-black-solid: #000000;
+	--color-white-0: rgba(255, 255, 255, 0);
+	--color-white-solid: #ffffff;
+	--color-grey-11: #1d1d1d;
+	--color-grey-91: #ede2e2;
+	--color-grey-93: #f3f3e9;
+	--color-grey-95: #f3f0ef;
+	--color-grey-98: #fcfcf7;
+	--color-yellow-44: #a7a238;
+	--color-yellow-50: #fff500;
+	--color-azure-35: #2b6786;
+	--color-azure-52: #5b93b0;
+	--color-azure-84: #afd8fb;
+	--color-orange-24: #693413;
+	--color-orange-36: #925026;
+	
+	/* Fonts */
+	/* 한글 KoPubDotum - Bold (700) */
+	--KoPubDotum-family: KoPubDotum, sans-serif;
+	--KoPubDotum-size: 30px;
+	--KoPubDotum-height: 300;
+	--KoPubDotum-weight: 700;
+	--KoPubDotum-style: normal;
+	
+	/* 한글 KoPubDotum - Medium (500) */
+	--KoPubDotum-family: KoPubDotum, sans-serif;
+	--KoPubDotum-size: 30px;
+	--KoPubDotum-height: 300;
+	--KoPubDotum-weight: 500;
+	--KoPubDotum-style: normal;
+
+	/* 한글 KoPubDotum - Light (300) */
+	--KoPubDotum-family: KoPubDotum, sans-serif;
+	--KoPubDotum-size: 30px;
+	--KoPubDotum-height: 300;
+	--KoPubDotum-weight: 300;
+	--KoPubDotum-style: normal;
+	
+	/*영문 Bayon */
+	--Bayon-family: Bayon, sans-serif;
+	--Bayon-size: 390px;
+	--Bayon-height: 304;
+	--Bayon-weight: 400;
+	--Bayon-style: normal;
+	
+	--Bayon-family: Bayon, sans-serif;
+	--Bayon-size: 314px;
+	--Bayon-height: 245;
+	--Bayon-weight: 400;
+	--Bayon-style: normal;
+	
+	--Bayon-family: Bayon, sans-serif;
+	--Bayon-size: 293px;
+	--Bayon-height: 228;
+	--Bayon-weight: 400;
+	--Bayon-style: normal;
+	
+	--Bayon-family: Bayon, sans-serif;
+	--Bayon-size: 248px;
+	--Bayon-height: 193px;
+	--Bayon-weight: 400;
+	--Bayon-style: normal;
+	
+	--Bayon-family: Bayon, sans-serif;
+	--Bayon-size: 236px;
+	--Bayon-height: 184px;
+	--Bayon-weight: 400;
+	--Bayon-style: normal;
+	
+	--Bayon-family: Bayon, sans-serif;
+	--Bayon-size: 186px;
+	--Bayon-height: 145px;
+	--Bayon-weight: 400;
+	--Bayon-style: normal;
+	
+	--Bayon-family: Bayon, sans-serif;
+	--Bayon-size: 168px;
+	--Bayon-height: 134.4px;
+	--Bayon-weight: 400;
+	--Bayon-style: normal;
+	
+	--Bayon-family: Bayon, sans-serif;
+	--Bayon-size: 128px;
+	--Bayon-height: 100px;
+	--Bayon-weight: 400;
+	--Bayon-style: normal;
+
+	--Bayon-family: Bayon, sans-serif;
+	--Bayon-size: 70px;
+	--Bayon-height: 54px;
+	--Bayon-weight: 400;
+	--Bayon-style: normal;
+	
+	--Bayon-family: Bayon, sans-serif;
+	--Bayon-size: 56px;
+	--Bayon-height: 56px;
+	--Bayon-weight: 400;
+	--Bayon-style: normal;
+	
+	--Bayon-family: Bayon, sans-serif;
+	--Bayon-size: 40px;
+	--Bayon-height: 40px;
+	--Bayon-weight: 400;
+	--Bayon-style: normal;
+	
+	--Bayon-family: Bayon, sans-serif;
+	--Bayon-size: 30px;
+	--Bayon-height: 30px;
+	--Bayon-weight: 400;
+	--Bayon-style: normal;
+	
+	--Bayon-family: Bayon, sans-serif;
+	--Bayon-size: 16px;
+	--Bayon-height: 16px;
+	--Bayon-weight: 400;
+	--Bayon-style: normal;
+	
+	/*영문 Inter */
+	/* Inter - black 큰글자 (900) */
+	--Inter-family: Inter, sans-serif;
+	--Inter-size: 30px;
+	--Inter-height: 30;
+	--Inter-weight: 900;
+	--Inter-style: normal;
+	
+	/* Inter - Bold 큰글자 (700) */
+	--Inter-family: Inter, sans-serif;
+	--Inter-size: 30px;
+	--Inter-height: 30;
+	--Inter-weight: 700;
+	--Inter-style: normal;
+	
+	/* Inter - Light 큰글자 (300) */
+	--Inter-family: Inter, sans-serif;
+	--Inter-size: 30px;
+	--Inter-height: 30;
+	--Inter-weight: 300;
+	--Inter-style: normal;
+		
+	/* Inter - Medium 작은글자 (500) */
+	--Inter-family: Inter, sans-serif;
+	--Inter-size: 14px;
+	--Inter-height: 14px;
+	--Inter-weight: 500;
+	--Inter-style: normal;
+	
+	--Inter-family: Inter, sans-serif;
+	--Inter-size: 12px;
+	--Inter-height: 12px;
+	--Inter-weight: 500;
+	--Inter-style: normal;
+	
+	--Inter-family: Inter, sans-serif;
+	--Inter-size: 11px;
+	--Inter-height: 11px;
+	--Inter-weight: 500;
+	--Inter-style: normal;
+}
