@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>꼬리살랑 메인페이지</title>
 
-    <%@ include file="./inc/head_link.jsp" %>
+    <%@ include file="../main/inc/head_link.jsp" %>
     
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/vars.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
@@ -16,7 +16,7 @@
 
 <body>
     <!-- header  -->
-	<%@ include file="./inc/header.jsp" %>
+	<%@ include file="../main/inc/header.jsp" %>
 	
 	<div class="corisalrang_1227">
     <div class="_w-light">
@@ -320,7 +320,7 @@
             </div>
             
 			<!-- footer  -->
-			<%@ include file="./inc/footer.jsp" %>    
+			<%@ include file="../main/inc/footer.jsp" %>    
    
           
           </div>
